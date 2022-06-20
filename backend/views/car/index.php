@@ -5,6 +5,7 @@ use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\CarSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -29,7 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'doc_no',
             'trans_date',
             'area_id',
@@ -42,15 +42,11 @@ $this->params['breadcrumbs'][] = $this->title;
             //'responsibility',
             //'status',
             //'note',
-            //'created_at',
-            //'created_by',
-            //'updated_at',
-            //'updated_by',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Car $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                }
             ],
         ],
     ]); ?>

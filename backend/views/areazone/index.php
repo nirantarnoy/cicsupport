@@ -5,6 +5,7 @@ use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\AreazoneSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -29,21 +30,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //  'id',
             'code',
             'name',
             'description',
             'status',
-            //'created_at',
-            //'created_by',
-            //'updated_at',
-            //'updated_by',
-            //'seq_sort',
+            'seq_sort',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action,  $model, $key, $index, $column) {
+                'urlCreator' => function ($action, $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                }
             ],
         ],
     ]); ?>

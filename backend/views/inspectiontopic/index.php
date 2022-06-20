@@ -29,16 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'name',
             'description',
             'status',
             'seq_sort',
-            //'module_type_id',
-            //'created_at',
-            //'created_by',
-            //'updated_at',
-            //'updated_by',
+            'module_type_id',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Inspectiontopic $model, $key, $index, $column) {
