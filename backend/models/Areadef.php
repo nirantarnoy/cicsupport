@@ -39,4 +39,12 @@ class Areadef extends \common\models\AreaDefinition {
 
         ];
     }
+    public static function findName($id){
+        $model = Areadef::find()->where(['id'=>$id])->one();
+        return $model !=null?$model->name:'';
+    }
+    public static function findId($name){
+        $model = Areadef::find()->where(['name'=>$name])->one();
+        return $model !=null?$model->id:0;
+    }
 }

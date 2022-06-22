@@ -16,17 +16,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'seq_sort')->textInput() ?>
 
+    <?= $form->field($model, 'area_zone_id')->widget(\kartik\select2\Select2::className(),[
+        'data'=>\yii\helpers\ArrayHelper::map(\backend\models\Areazone::find()->all(),'id','name'),
+        'options' => [
+            'placeholder'=>'เลือก'
+        ]
+    ]) ?>
     <?= $form->field($model, 'status')->textInput() ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
 
-    <?= $form->field($model, 'created_by')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_by')->textInput() ?>
-
-    <?= $form->field($model, 'area_zone_id')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

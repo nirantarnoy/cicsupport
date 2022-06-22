@@ -39,4 +39,12 @@ class Area extends \common\models\Area{
 
         ];
     }
+    public static function findName($id){
+        $model = Area::find()->where(['id'=>$id])->one();
+        return $model !=null?$model->name:'';
+    }
+    public static function findId($name){
+        $model = Area::find()->where(['name'=>$name])->one();
+        return $model !=null?$model->id:0;
+    }
 }

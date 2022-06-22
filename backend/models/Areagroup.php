@@ -39,4 +39,12 @@ class Areagroup extends \common\models\AreaGroup {
 
         ];
     }
+    public static function findName($id){
+        $model = Areagroup::find()->where(['id'=>$id])->one();
+        return $model !=null?$model->name:'';
+    }
+    public static function findId($name){
+        $model = Areagroup::find()->where(['name'=>$name])->one();
+        return $model !=null?$model->id:0;
+    }
 }

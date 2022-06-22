@@ -40,4 +40,13 @@ class Areazone extends \common\models\AreaZone{
 
         ];
     }
+
+    public static function findName($id){
+        $model = Areazone::find()->where(['id'=>$id])->one();
+        return $model !=null?$model->name:'';
+    }
+    public static function findId($name){
+        $model = Areazone::find()->where(['name'=>$name])->one();
+        return $model !=null?$model->id:0;
+    }
 }

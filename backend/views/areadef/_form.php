@@ -27,6 +27,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'area_id')->textInput() ?>
 
+    <?= $form->field($model, 'is_cal_bonus')->widget(\kartik\select2\Select2::className(),[
+        'data'=>\yii\helpers\ArrayHelper::map(\backend\helpers\CalType::asArrayObject(),'id','name'),
+    ]) ?>
+
     <?= $form->field($model, 'status')->textInput() ?>
     
 

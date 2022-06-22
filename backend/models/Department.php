@@ -39,4 +39,12 @@ class Department extends \common\models\Department {
 
         ];
     }
+    public static function findName($id){
+        $model = Department::find()->where(['id'=>$id])->one();
+        return $model !=null?$model->name:'';
+    }
+    public static function findId($name){
+        $model = Department::find()->where(['name'=>$name])->one();
+        return $model !=null?$model->id:0;
+    }
 }
