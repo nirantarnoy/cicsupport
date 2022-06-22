@@ -18,19 +18,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'sort_seq')->textInput() ?>
 
-    <?= $form->field($model, 'area_group_id')->textInput() ?>
+    <?= $form->field($model, 'area_group_id')->widget(\kartik\select2\Select2::className(),[
+        'data'=>\yii\helpers\ArrayHelper::map(\backend\models\Areagroup::find()->where()->all(),'id','name'),
+        'options' => [
+            'placeholder'=>'เลือกกลุ่มพื้นที่'
+        ]
+    ]) ?>
 
     <?= $form->field($model, 'area_id')->textInput() ?>
 
     <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'created_by')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_by')->textInput() ?>
+    
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

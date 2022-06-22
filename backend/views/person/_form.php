@@ -38,7 +38,12 @@ use kartik\select2\Select2;
 
             <?= $form->field($model, 'idcard')->textInput(['maxlength' => true,'readonly'=>'readonly']) ?>
 
-            <?= $form->field($model, 'department_id')->textInput() ?>
+            <?= $form->field($model, 'department_id')->widget(\kartik\select2\Select2::className(),[
+                'data'=>\yii\helpers\ArrayHelper::map(\backend\models\Department::find()->where()->all(),'id','name'),
+                'options' => [
+                    'placeholder'=>'เลือก'
+                ]
+            ]) ?>
 
             <?= $form->field($model, 'section_id')->textInput() ?>
 

@@ -14,7 +14,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'area_group_id')->textInput() ?>
+    <?= $form->field($model, 'area_group_id')->widget(\kartik\select2\Select2::className(),[
+            'data'=>\yii\helpers\ArrayHelper::map(\backend\models\Areagroup::find()->where()->all(),'id','name'),
+            'options' => [
+                    'placeholder'=>'เลือกกลุ่มพื้นที่'
+            ]
+    ]) ?>
 
     <?= $form->field($model, 'std_prize_id')->textInput() ?>
 
