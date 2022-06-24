@@ -21,7 +21,12 @@ use yii\widgets\ActiveForm;
             ]
     ]) ?>
 
-    <?= $form->field($model, 'std_prize_id')->textInput() ?>
+    <?= $form->field($model, 'std_prize_id')->widget(\kartik\select2\Select2::className(),[
+        'data'=>\yii\helpers\ArrayHelper::map(\backend\models\Standardprize::find()->all(),'id','name'),
+        'options' => [
+            'placeholder'=>'เลือก'
+        ]
+    ]) ?>
 
     <?= $form->field($model, 'seq_sort')->textInput() ?>
 

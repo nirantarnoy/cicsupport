@@ -45,14 +45,14 @@ class AreaGroup extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'seq_sort' => 'Seq Sort',
-            'status' => 'Status',
+            'name' => 'ชื่อ',
+            'seq_sort' => 'ลำดับการเรียง',
+            'status' => 'สถานะ',
             'created_at' => 'Created At',
             'created_by' => 'Created By',
             'updated_at' => 'Updated At',
             'updated_by' => 'Updated By',
-            'area_zone_id' => 'Area Zone ID',
+            'area_zone_id' => 'โซนพื้นที่',
         ];
     }
 }
