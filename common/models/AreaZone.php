@@ -46,15 +46,15 @@ class AreaZone extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'code' => 'Code',
-            'name' => 'Name',
-            'description' => 'Description',
-            'status' => 'Status',
+            'code' => 'รหัส',
+            'name' => 'ชื่อ',
+            'description' => 'รายละเอียด',
+            'status' => 'สถานะ',
             'created_at' => 'Created At',
             'created_by' => 'Created By',
             'updated_at' => 'Updated At',
             'updated_by' => 'Updated By',
-            'seq_sort' => 'Seq Sort',
+            'seq_sort' => 'ลำดับการแสดง',
         ];
     }
 }

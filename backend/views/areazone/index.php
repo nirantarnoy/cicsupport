@@ -10,7 +10,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\AreazoneSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Areazones';
+$this->title = 'โซนพื้นที่พื้นที่';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="areazone-index">
@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <div class="col-lg-6" style="text-align: right;">
             <p>
-                <?= Html::a('Create Area', ['create'], ['class' => 'btn btn-success']) ?>
+                <?= Html::a('สร้างโซนพื้นที่', ['create'], ['class' => 'btn btn-success']) ?>
             </p>
 
         </div>

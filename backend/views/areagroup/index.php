@@ -9,7 +9,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\AreagroupSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Areagroups';
+$this->title = 'กลุ่มพื้นที่';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="areagroup-index">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <div class="col-lg-6" style="text-align: right;">
             <p>
-                <?= Html::a('Create Area', ['create'], ['class' => 'btn btn-success']) ?>
+                <?= Html::a('สร้างกลุ่มพื้นที่', ['create'], ['class' => 'btn btn-success']) ?>
             </p>
 
         </div>
@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'seq_sort',
             'status',
-            'created_at',
+//            'created_at',
             'area_zone_id',
             [
                 'class' => ActionColumn::className(),

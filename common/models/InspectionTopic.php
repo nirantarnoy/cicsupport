@@ -46,11 +46,11 @@ class InspectionTopic extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description',
-            'status' => 'Status',
-            'seq_sort' => 'Seq Sort',
-            'module_type_id' => 'Module Type ID',
+            'name' => 'ชื่อ',
+            'description' => 'รายละเอียด',
+            'status' => 'สถานะ',
+            'seq_sort' => 'ลำดับการแสดง',
+            'module_type_id' => 'ประเภทกิจกรรม',
             'created_at' => 'Created At',
             'created_by' => 'Created By',
             'updated_at' => 'Updated At',

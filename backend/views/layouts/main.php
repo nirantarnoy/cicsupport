@@ -505,6 +505,13 @@ AppAsset::register($this);
                                     <li class="nav-item">
                                         <a href="index.php?r=areazone" class="nav-link">
                                           <span class="nav-text">
+                                                  <span>โซนพื้นที่</span>
+                                          </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="index.php?r=areagroup" class="nav-link">
+                                          <span class="nav-text">
                                                   <span>กลุ่มพื้นที่</span>
                                           </span>
                                         </a>
@@ -513,6 +520,13 @@ AppAsset::register($this);
                                         <a href="index.php?r=area" class="nav-link">
                                           <span class="nav-text">
                                                   <span>พื้นที่</span>
+                                          </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="index.php?r=areadef" class="nav-link">
+                                          <span class="nav-text">
+                                                  <span>พื้นที่ตรวจ</span>
                                           </span>
                                         </a>
                                     </li>

@@ -3,9 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model backend\models\Area */
-/* @var $form yii\widgets\ActiveForm */
+$area_group_data = \common\models\AreaGroup::find()->all();
+$std_price_data = \common\models\StandardPrize::find()->all();
 ?>
 
 <div class="area-form">
@@ -14,72 +13,20 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'area_group_id')->widget(\kartik\select2\Select2::className(),[
-            'data'=>\yii\helpers\ArrayHelper::map(\backend\models\Areagroup::find()->all(),'id','name'),
-            'options' => [
-                    'placeholder'=>'เลือกกลุ่มพื้นที่'
-            ]
-    ]) ?>
-
-    <?= $form->field($model, 'std_prize_id')->widget(\kartik\select2\Select2::className(),[
-        'data'=>\yii\helpers\ArrayHelper::map(\backend\models\Standardprize::find()->all(),'id','name'),
-        'options' => [
-            'placeholder'=>'เลือก'
-        ]
-    ]) ?>
-
-    <select id="form-field-chosen-1" data-placeholder="Choose a state..." class="chosen-select form-control">
+    <label for="">กลุ่มพื้นที่</label>
+    <select id="form-field-chosen-1" data-placeholder="Choose a state..." class="chosen-select form-control" name="area_group_id">
         <option value=""></option>
-        <option value='AL'>Alabama</option>
-        <option value='AK'>Alaska</option>
-        <option value='AZ'>Arizona</option>
-        <option value='AR'>Arkansas</option>
-        <option value='CA'>California</option>
-        <option value='CO'>Colorado</option>
-        <option value='CT'>Connecticut</option>
-        <option value='DE'>Delaware</option>
-        <option value='FL'>Florida</option>
-        <option value='GA'>Georgia</option>
-        <option value='HI'>Hawaii</option>
-        <option value='ID'>Idaho</option>
-        <option value='IL'>Illinois</option>
-        <option value='IN'>Indiana</option>
-        <option value='IA'>Iowa</option>
-        <option value='KS'>Kansas</option>
-        <option value='KY'>Kentucky</option>
-        <option value='LA'>Louisiana</option>
-        <option value='ME'>Maine</option>
-        <option value='MD'>Maryland</option>
-        <option value='MA'>Massachusetts</option>
-        <option value='MI'>Michigan</option>
-        <option value='MN'>Minnesota</option>
-        <option value='MS'>Mississippi</option>
-        <option value='MO'>Missouri</option>
-        <option value='MT'>Montana</option>
-        <option value='NE'>Nebraska</option>
-        <option value='NV'>Nevada</option>
-        <option value='NH'>New Hampshire</option>
-        <option value='NJ'>New Jersey</option>
-        <option value='NM'>New Mexico</option>
-        <option value='NY'>New York</option>
-        <option value='NC'>North Carolina</option>
-        <option value='ND'>North Dakota</option>
-        <option value='OH'>Ohio</option>
-        <option value='OK'>Oklahoma</option>
-        <option value='OR'>Oregon</option>
-        <option value='PA'>Pennsylvania</option>
-        <option value='RI'>Rhode Island</option>
-        <option value='SC'>South Carolina</option>
-        <option value='SD'>South Dakota</option>
-        <option value='TN'>Tennessee</option>
-        <option value='TX'>Texas</option>
-        <option value='UT'>Utah</option>
-        <option value='VT'>Vermont</option>
-        <option value='VA'>Virginia</option>
-        <option value='WA'>Washington</option>
-        <option value='WV'>West Virginia</option>
-        <option value='WI'>Wisconsin</option>
-        <option value='WY'>Wyoming</option>
+        <?php foreach ($area_group_data as $value): ?>
+            <option value=" <?= $value->id ?>"><?= $value->name ?></option>
+        <?php endforeach; ?>
+    </select>
+
+    <label for="">เกณฑ์การตัดเงิน</label>
+    <select id="form-field-chosen-1" data-placeholder="Choose a state..." class="chosen-select form-control" name="std_prize_id">
+        <option value=""></option>
+        <?php foreach ($std_price_data as $value): ?>
+            <option value=" <?= $value->id ?>"><?= $value->name ?></option>
+        <?php endforeach; ?>
     </select>
 
     <?= $form->field($model, 'seq_sort')->textInput() ?>

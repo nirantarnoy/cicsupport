@@ -9,7 +9,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\DepartmentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Departments';
+$this->title = 'แผนก';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="department-index">

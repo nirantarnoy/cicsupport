@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Areagroup */
 
-$this->title = 'Update Areagroup: ' . $model->name;
+$this->title = 'แก้ไขกลุ่มพื้นที่: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Areagroups', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
