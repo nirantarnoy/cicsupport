@@ -113,7 +113,7 @@ AppAsset::register($this);
                 <!-- mobile #navbarMenu toggler button -->
                 <button class="navbar-toggler ml-1 mr-2 px-1" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navbar menu">
               <span class="pos-rel">
-                  <img class="radius-3px mr-1 brc-grey-m2 border-1" width="36" src="assets/image/avatar/avatar6.jpg" alt="User's Photo">
+                  <img class="radius-3px mr-1 brc-grey-m2 border-1" width="36" src="assets/image/avatar/my_pic.jpeg" alt="User's Photo">
                   <span class="badge badge-dot bgc-orange-d1 position-tr mr-1px mt-n1"></span>
               </span>
                 </button>
@@ -278,7 +278,7 @@ AppAsset::register($this);
 
                             <li class="nav-item dropdown order-first order-lg-last dropdown-hover">
                                 <a class="nav-link dropdown-toggle px-lg-2 ml-lg-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <img id="id-navbar-user-image" class="d-none d-lg-inline-block radius-3px mr-1 brc-grey-m2 border-1" src="../web/my_theme/assets/image/avatar/avatar6.jpg" height="42" alt="User's Photo">
+                                    <img id="id-navbar-user-image" class="d-none d-lg-inline-block radius-3px mr-1 brc-grey-m2 border-1" src="../web/my_theme/assets/image/avatar/avatar2.jpg" height="42" alt="User's Photo">
 
                                     <span class="d-inline-block d-lg-none">Welcome, Admin</span><!-- show only on mobile -->
 

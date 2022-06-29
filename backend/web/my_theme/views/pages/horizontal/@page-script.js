@@ -86,10 +86,10 @@ jQuery(function($) {
    new Chart(ctx1, {
     type: 'line',
     data: {
-      labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      labels: ["มค.", "กพ.", "มีค.", "เมย.", "พค.", "มิย.", "กค."],
       datasets: [{
         type: 'line',
-        label: 'Offline',
+        label: 'วางแผนการผลิต',
         
         data: [8000, 6000, 4000, 4500, 3000, 9000, 11000],
 
@@ -109,7 +109,7 @@ jQuery(function($) {
       },
       {
         type: 'line',
-        label: 'Online',
+        label: 'สารสนเทศ',
         
         data: [4500, 9000, 5000, 7000, 6000, 11000, 7500],
         
@@ -127,7 +127,28 @@ jQuery(function($) {
         pointBorderColor: 'transparent',
 
         lineTension: 0.3
-      }   
+      },
+          {
+              type: 'line',
+              label: 'จัดซื้อ',
+
+              data: [3900, 4500, 5000, 500, 6000, 11000, 5800],
+
+
+              borderColor: 'rgba(10, 05, 255, 0.67)',
+              borderWidth: 1.25,
+
+              fill: false,
+              backgroundColor : gradient2,
+
+              pointRadius: 10,
+              pointBorderWidth: 10,
+              pointBackgroundColor: 'transparent',
+              pointHoverBackgroundColor: 'rgba(0, 0, 0, 0.27)',
+              pointBorderColor: 'transparent',
+
+              lineTension: 0.3
+          }
     ]
     },
     options: {
@@ -307,27 +328,27 @@ jQuery(function($) {
 
     events: [
 		  {
-        title: 'Some Event',
+        title: 'ทีม1 (5ส.)',
         description: 'Event 1 description',
         start: new Date(y, m, 1, Math.random() * 23 + 1),
         className: 'brc-red border-l-3 radius-0 text-dark-tp2 bgc-red-l3 text-95 px-2 py-1'
 		  },
 		  {
-        title: 'Long Event',
+        title: 'ทีม2 (5ส.)',
         description: 'Event 2 description',
         start: new Date(y, m, day1, Math.random() * 23 + 1),
         end: new Date(y, m, day1 + 4, Math.random() * 23 + 1),
         className: 'brc-green border-l-3 radius-0 text-dark-tp2 bgc-green-l3 text-95 px-2 py-1'
 		  },
 		  {
-        title: 'Other Event',
+        title: 'ทีม3 (5ส.)',
         description: 'Event 3 description',
         start: new Date(y, m, day2, Math.random() * 23 + 1),
         allDay: false,
         className: 'brc-blue border-l-3 radius-0 text-dark-tp2 bgc-blue-l3 text-95 px-2 py-1'
       },
       {
-        title: 'More Events',
+        title: 'ทีม1 (satety)',
         description: 'Event 4 description',
         start: new Date(y, m, day3, Math.random() * 10 + 1),
         end: new Date(y, m, day3 + 1, Math.random() * 10 + 1),
