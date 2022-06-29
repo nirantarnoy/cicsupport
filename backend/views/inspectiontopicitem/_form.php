@@ -3,9 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model backend\models\Inspectiontopicitem */
-/* @var $form yii\widgets\ActiveForm */
+$topic_data = \common\models\InspectionTopic::find()->all();
 ?>
 
 <div class="inspectiontopicitem-form">
@@ -14,7 +12,18 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'topic_id')->textInput() ?>
+    <label for="">หัวข้อการตรวจ</label>
+    <select id="" data-placeholder="Choose a state..." class="chosen-select form-control" name="topic_id">
+        <option value=""></option>
+        <?php foreach ($topic_data as $value): ?>
+            <?php $selected = '';
+            if ($model->topic_id == $value->id) {
+                $selected = 'selected';
+            }
+            ?>
+            <option value=" <?= $value->id ?>" <?= $selected ?> ><?= $value->name ?></option>
+        <?php endforeach; ?>
+    </select>
 
     <?= $form->field($model, 'activity_type_id')->textInput() ?>
 

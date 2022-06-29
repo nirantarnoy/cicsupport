@@ -3,9 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model backend\models\Areagroup */
-/* @var $form yii\widgets\ActiveForm */
+$zone_data = \common\models\AreaZone::find()->all();
 ?>
 
 <div class="areagroup-form">
@@ -16,12 +14,20 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'seq_sort')->textInput() ?>
 
-    <?= $form->field($model, 'area_zone_id')->widget(\kartik\select2\Select2::className(),[
-        'data'=>\yii\helpers\ArrayHelper::map(\backend\models\Areazone::find()->all(),'id','name'),
-        'options' => [
-            'placeholder'=>'เลือก'
-        ]
-    ]) ?>
+
+    <label for="">โซนพื้นที่</label>
+    <select id="" data-placeholder="Choose a state..." class="chosen-select form-control" name="area_zone_id_new">
+        <option value=""></option>
+        <?php foreach ($zone_data as $value): ?>
+            <?php $selected = '';
+            if ($model->area_zone_id == $value->id) {
+                $selected = 'selected';
+            }
+            ?>
+            <option value=" <?= $value->id ?>" <?= $selected ?> ><?= $value->name ?></option>
+        <?php endforeach; ?>
+    </select>
+
     <?= $form->field($model, 'status')->textInput() ?>
 
 

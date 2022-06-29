@@ -70,8 +70,14 @@ class AreaController extends Controller
         $model = new Area();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                $group_id_new = \Yii::$app->request->post('area_group_id_new');
+                $std_prize_id_new = \Yii::$app->request->post('std_prize_id_new');
+                $model->area_group_id = $group_id_new;
+                $model->std_prize_id = $std_prize_id_new;
+                if($model->save(false)){
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -93,8 +99,14 @@ class AreaController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $group_id_new = \Yii::$app->request->post('area_group_id_new');
+            $std_prize_id_new = \Yii::$app->request->post('std_prize_id_new');
+            $model->area_group_id = $group_id_new;
+            $model->std_prize_id = $std_prize_id_new;
+            if($model->save(false)){
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('update', [

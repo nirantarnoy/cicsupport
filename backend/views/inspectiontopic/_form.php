@@ -3,10 +3,10 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model backend\models\Inspectiontopic */
-/* @var $form yii\widgets\ActiveForm */
+$module_data = \backend\helpers\ModuleType::asArrayObject();
+//print_r($module_data);
 ?>
+
 
 <div class="inspectiontopic-form">
 
@@ -20,12 +20,19 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'seq_sort')->textInput() ?>
 
-    <?= $form->field($model, 'module_type_id')->widget(\kartik\select2\Select2::className(),[
-        'data'=>\yii\helpers\ArrayHelper::map(\backend\helpers\ModuleType::asArrayObject(),'id','name'),
-        'options' => [
-            'placeholder'=>'เลือกกิจกรรม'
-        ]
-    ]) ?>
+    <label for="">ประเภทกิจกรรม</label>
+    <select id="" data-placeholder="Choose a state..." class="chosen-select form-control" name="module_type_id">
+        <option value=""></option>
+        <?php for ($i=0;$i <= count($module_data)-1;$i++): ?>
+            <?php $selected = '';
+            if ($model->module_type_id == $module_data[$i]['id']) {
+                $selected = 'selected';
+            }
+            ?>
+            <option value=" <?= $module_data[$i]['id'] ?>" <?= $selected ?> ><?= $module_data[$i]['name'] ?></option>
+        <?php endfor; ?>
+    </select>
+    <br />
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

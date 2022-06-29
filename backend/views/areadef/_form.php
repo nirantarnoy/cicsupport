@@ -3,9 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model backend\models\Areadef */
-/* @var $form yii\widgets\ActiveForm */
+$area_group_data = \common\models\AreaGroup::find()->all();
+$area_data = \common\models\Area::find()->all();
 ?>
 
 <div class="areadef-form">
@@ -18,19 +17,31 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'sort_seq')->textInput() ?>
 
-    <?= $form->field($model, 'area_group_id')->widget(\kartik\select2\Select2::className(),[
-        'data'=>\yii\helpers\ArrayHelper::map(\backend\models\Areagroup::find()->all(),'id','name'),
-        'options' => [
-            'placeholder'=>'เลือกกลุ่มพื้นที่'
-        ]
-    ]) ?>
+    <label for="">กลุ่มพื้นที่</label>
+    <select id="" data-placeholder="Choose a state..." class="chosen-select form-control" name="area_group_id">
+        <option value=""></option>
+        <?php foreach ($area_group_data as $value): ?>
+            <?php $selected = '';
+            if ($model->area_group_id == $value->id) {
+                $selected = 'selected';
+            }
+            ?>
+            <option value=" <?= $value->id ?>" <?= $selected ?> ><?= $value->name ?></option>
+        <?php endforeach; ?>
+    </select>
 
-    <?= $form->field($model, 'area_id')->widget(\kartik\select2\Select2::className(),[
-        'data'=>\yii\helpers\ArrayHelper::map(\backend\models\Area::find()->all(),'id','name'),
-        'options' => [
-            'placeholder'=>'เลือก'
-        ]
-    ]) ?>
+    <label for="">พื้นที่</label>
+    <select id="" data-placeholder="Choose a state..." class="chosen-select form-control" name="area_id">
+        <option value=""></option>
+        <?php foreach ($area_data as $value): ?>
+            <?php $selected = '';
+            if ($model->area_id == $value->id) {
+                $selected = 'selected';
+            }
+            ?>
+            <option value=" <?= $value->id ?>" <?= $selected ?> ><?= $value->name ?></option>
+        <?php endforeach; ?>
+    </select>
 
     <?= $form->field($model, 'is_cal_bonus')->widget(\kartik\select2\Select2::className(),[
         'data'=>\yii\helpers\ArrayHelper::map(\backend\helpers\CalType::asArrayObject(),'id','name'),

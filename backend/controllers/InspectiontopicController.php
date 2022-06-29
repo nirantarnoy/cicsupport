@@ -70,8 +70,13 @@ class InspectiontopicController extends Controller
         $model = new Inspectiontopic();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                $module_type_id = \Yii::$app->request->post('module_type_id');
+
+                $model->module_type_id = $module_type_id;
+                if($model->save(false)){
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -93,8 +98,13 @@ class InspectiontopicController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $module_type_id = \Yii::$app->request->post('module_type_id');
+
+            $model->module_type_id = $module_type_id;
+            if($model->save(false)){
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('update', [

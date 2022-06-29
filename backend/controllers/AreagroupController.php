@@ -70,9 +70,14 @@ class AreagroupController extends Controller
         $model = new Areagroup();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+                if ($model->load($this->request->post())) {
+                    $zone_id = \Yii::$app->request->post('area_zone_id_new');
+
+                    $model->area_zone_id = $zone_id;
+                    if($model->save(false)){
+                        return $this->redirect(['view', 'id' => $model->id]);
+                    }
+                }
         } else {
             $model->loadDefaultValues();
         }
@@ -93,8 +98,13 @@ class AreagroupController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $zone_id = \Yii::$app->request->post('area_zone_id_new');
+
+            $model->area_zone_id = $zone_id;
+            if($model->save(false)){
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('update', [

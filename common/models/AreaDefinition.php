@@ -50,7 +50,7 @@ class AreaDefinition extends \yii\db\ActiveRecord
             'name' => 'ชื่อ',
             'description' => 'รายละเอียด',
             'sort_seq' => 'ลำดับการแสดง',
-            'area_group_id' => 'กลุ่มพท้นที่',
+            'area_group_id' => 'กลุ่มพื้นที่',
             'area_id' => 'พื้นที่',
             'status' => 'สถานะ',
             'created_at' => 'Created At',

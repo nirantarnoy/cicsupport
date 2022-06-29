@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 $area_group_data = \common\models\AreaGroup::find()->all();
-$std_price_data = \common\models\StandardPrize::find()->all();
+$std_prize_data = \common\models\StandardPrize::find()->all();
 ?>
 
 <div class="area-form">
@@ -14,18 +14,28 @@ $std_price_data = \common\models\StandardPrize::find()->all();
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <label for="">กลุ่มพื้นที่</label>
-    <select id="form-field-chosen-1" data-placeholder="Choose a state..." class="chosen-select form-control" name="area_group_id">
+    <select id="" data-placeholder="Choose a state..." class="chosen-select form-control" name="area_group_id_new">
         <option value=""></option>
         <?php foreach ($area_group_data as $value): ?>
-            <option value=" <?= $value->id ?>"><?= $value->name ?></option>
+            <?php $selected = '';
+            if ($model->area_group_id == $value->id) {
+                $selected = 'selected';
+            }
+            ?>
+            <option value=" <?= $value->id ?>" <?= $selected ?> ><?= $value->name ?></option>
         <?php endforeach; ?>
     </select>
 
     <label for="">เกณฑ์การตัดเงิน</label>
-    <select id="form-field-chosen-1" data-placeholder="Choose a state..." class="chosen-select form-control" name="std_prize_id">
+    <select id="" data-placeholder="Choose a state..." class="chosen-select form-control" name="std_prize_id_new">
         <option value=""></option>
-        <?php foreach ($std_price_data as $value): ?>
-            <option value=" <?= $value->id ?>"><?= $value->name ?></option>
+        <?php foreach ($std_prize_data as $value): ?>
+            <?php $selected = '';
+                if($model->std_prize_id == $value->id){
+                    $selected = 'selected';
+                }
+            ?>
+            <option value=" <?= $value->id ?>" <?= $selected ?> ><?= $value->name ?></option>
         <?php endforeach; ?>
     </select>
 
