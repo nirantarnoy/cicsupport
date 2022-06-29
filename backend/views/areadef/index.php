@@ -9,7 +9,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\AreadefSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Areadefs';
+$this->title = 'พื้นที่ตรวจ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="areadef-index">

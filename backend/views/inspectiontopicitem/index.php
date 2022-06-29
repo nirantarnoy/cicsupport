@@ -9,7 +9,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\InspectiontopicitemSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Inspectiontopicitems';
+$this->title = 'รายละเอียดการตรวจ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="inspectiontopicitem-index">
@@ -35,8 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'name',
+//            'id',
+            //'name',
             'topic_id',
             'activity_type_id',
             'seq_sort',

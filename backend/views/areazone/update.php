@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Areazone */
 
-$this->title = 'Update Areazone: ' . $model->name;
+$this->title = 'แก้ไขโซนพื้นที่: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Areazones', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';

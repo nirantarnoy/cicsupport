@@ -9,7 +9,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\InspectiontopicSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Inspectiontopics';
+$this->title = 'หัวข้อตรวจ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="inspectiontopic-index">

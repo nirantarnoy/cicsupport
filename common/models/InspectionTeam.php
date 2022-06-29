@@ -32,7 +32,7 @@ class InspectionTeam extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status', 'created_at', 'created_by', 'updated_at', 'updated_by'], 'integer'],
+            [['status', 'created_at', 'created_by', 'updated_at', 'updated_by','module_type_id'], 'integer'],
             [['name', 'description'], 'string', 'max' => 255],
         ];
     }
@@ -44,13 +44,14 @@ class InspectionTeam extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description',
-            'status' => 'Status',
+            'name' => 'ชื่อ',
+            'description' => 'รายละเอียด',
+            'status' => 'สถานะ',
             'created_at' => 'Created At',
             'created_by' => 'Created By',
             'updated_at' => 'Updated At',
             'updated_by' => 'Updated By',
+            'module_type_id' => 'ประเภทกิจกรรม',
         ];
     }
 }

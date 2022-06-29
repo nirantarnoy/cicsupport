@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Inspectiontopic */
 
-$this->title = 'Create Inspectiontopic';
+$this->title = 'สร้างหัวข้อตรวจ';
 $this->params['breadcrumbs'][] = ['label' => 'Inspectiontopics', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

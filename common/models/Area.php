@@ -46,11 +46,11 @@ class Area extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'area_group_id' => 'Area Group ID',
-            'std_prize_id' => 'Std Prize ID',
-            'seq_sort' => 'Seq Sort',
-            'status' => 'Status',
+            'name' => 'ชื่อ',
+            'area_group_id' => 'กลุ่มพื้นที่',
+            'std_prize_id' => 'เกณฑ์การตัดเงิน',
+            'seq_sort' => 'ลำดับการแสดง',
+            'status' => 'สถานะ',
             'created_at' => 'Created At',
             'created_by' => 'Created By',
             'updated_at' => 'Updated At',
