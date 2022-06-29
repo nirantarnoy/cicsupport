@@ -9,20 +9,25 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\AreaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Areas';
+$this->title = 'พื้นที่';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="area-index">
+<div class="area-index" >
+    <div class="row">
+        <div class="col-lg-6"> <h3><?= Html::encode($this->title) ?></h3>
+        </div>
+        <div class="col-lg-6" style="text-align: right;">
+            <p>
+                <?= Html::a('Create Area', ['create'], ['class' => 'btn btn-success']) ?>
+            </p>
 
-    <h1><?= Html::encode($this->title) ?></h1>
+        </div>
+    </div>
 
-    <p>
-        <?= Html::a('Create Area', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
+    <div class="grid-area" style="background-color: white;padding: 5px;border-radius: 5px;">
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -45,5 +50,5 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
 
     <?php Pjax::end(); ?>
-
+    </div>
 </div>

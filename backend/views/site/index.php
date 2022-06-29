@@ -169,7 +169,7 @@ $this->title = 'CIC Support';
                 <div class="ml-auto d-flex align-items-center">
                     <div class="dropdown dd-backdrop dd-backdrop-none-md">
                         <a class="btn btn-light-blue btn-bgc-white btn-bold radius-2 px-3 btn-xs dropdown-toggle" href="#" role="button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                            This Week
+                            เดือนนี้
                         </a>
 
                         <div class="dropdown-menu shadow-sm dropdown-menu-right dropdown-caret dropdown-animated dd-slide-up dd-slide-none-md radius-1 brc-secondary-l1">
@@ -252,7 +252,7 @@ $this->title = 'CIC Support';
 
                 <div class="ml-auto d-flex align-items-center">
                     <a class="btn btn-light-secondary btn-bgc-white btn-bold radius-2 px-3 btn-xs text-nowrap" href="#">
-                        See All
+                        ดูทั้งหมด
                     </a>
 
                     <div class="ml-1 mr-2">

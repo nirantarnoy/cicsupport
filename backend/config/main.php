@@ -13,6 +13,13 @@ return [
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
+        'assetManager'=>[
+          'bundles' => [
+              'kartik\form\ActiveFormAsset'=>[
+                  'bsDependencyEnabled'=> true
+              ],
+          ]
+        ],
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],

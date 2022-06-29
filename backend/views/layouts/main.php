@@ -507,35 +507,35 @@ AppAsset::register($this);
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="html/alerts.html" class="nav-link">
+                                        <a href="index.php?r=inspectionteam" class="nav-link">
                                           <span class="nav-text">
                                                   <span>ทีมตรวจ</span>
                                           </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="html/alerts.html" class="nav-link">
+                                        <a href="index.php?r=department" class="nav-link">
                                           <span class="nav-text">
                                                   <span>แผนก</span>
                                           </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="html/alerts.html" class="nav-link">
+                                        <a href="index.php?r=person" class="nav-link">
                                           <span class="nav-text">
                                                   <span>ข้อมูลบุคคล</span>
                                           </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="index.php?r=inspectiontopic.php" class="nav-link">
+                                        <a href="index.php?r=inspectiontopic" class="nav-link">
                                           <span class="nav-text">
                                                   <span>หัวข้อตรวจ</span>
                                           </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="index.php?r=inspectiontopic.php" class="nav-link">
+                                        <a href="index.php?r=inspectiontopicitem" class="nav-link">
                                           <span class="nav-text">
                                                   <span>รายละเอียดการตรวจ</span>
                                           </span>
@@ -567,7 +567,7 @@ AppAsset::register($this);
                             <div class="hideable submenu collapse">
                                 <ul class="submenu-inner">
                                     <li class="nav-item">
-                                        <a href="index.php?r=inspectionteam.php" class="nav-link">
+                                        <a href="index.php?r=inspectionteam" class="nav-link">
                                           <span class="nav-text">
                                                   <span>ทีมตรวจ</span>
                                           </span>
@@ -637,7 +637,7 @@ AppAsset::register($this);
                             <b class="sub-arrow"></b>
                         </li>
                         <li class="nav-item">
-                            <a href="html/gallery.html" class="nav-link">
+                            <a href="index.php?r=reports" class="nav-link">
                                 <i class="nav-icon far fa-chart-bar"></i>
                                 <span class="nav-text fadeable">
                                   <span>รายงาน</span>
