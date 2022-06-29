@@ -36,6 +36,16 @@ AppAsset::register($this);
         <!-- include vendor stylesheets used in "Horizontal Menu" page. see "/views//pages/partials/horizontal/@vendor-stylesheets.hbs" -->
         <link rel="stylesheet" type="text/css" href="../web/my_theme/node_modules/fullcalendar/main.css">
 
+        <!-- include vendor stylesheets used in "More Elements" page. see "/views//pages/partials/form-more/@vendor-stylesheets.hbs" -->
+        <link rel="stylesheet" type="text/css" href="../web/my_theme/node_modules/bootstrap-star-rating/css/star-rating.css">
+
+        <link rel="stylesheet" type="text/css" href="../web/my_theme/node_modules/bootstrap-select/dist/css/bootstrap-select.css">
+
+        <link rel="stylesheet" type="text/css" href="../web/my_theme/node_modules/bootstrap-duallistbox/dist/bootstrap-duallistbox.css">
+
+
+        <link rel="stylesheet" type="text/css" href="../web/my_theme/node_modules/select2/dist/css/select2.css">
+        <link rel="stylesheet" type="text/css" href="../web/my_theme/node_modules/chosen-js/chosen.css">
 
         <!-- include fonts -->
         <link rel="stylesheet" type="text/css" href="../web/my_theme/dist/css/ace-font.css">
@@ -603,21 +613,21 @@ AppAsset::register($this);
                             <div class="hideable submenu collapse">
                                 <ul class="submenu-inner">
                                     <li class="nav-item">
-                                        <a href="html/table-basic.html" class="nav-link">
+                                        <a href="index.php?r=plan" class="nav-link">
                                           <span class="nav-text">
                                                   <span>5ส.</span>
                                           </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="html/table-datatables.html" class="nav-link">
+                                        <a href="index.php?r=plan" class="nav-link">
                                           <span class="nav-text">
                                                   <span>Safety</span>
                                           </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="html/table-bootstrap.html" class="nav-link">
+                                        <a href="index.php?r=plan" class="nav-link">
                                           <span class="nav-text">
                                                   <span>Kizen</span>
                                           </span>
@@ -741,6 +751,21 @@ AppAsset::register($this);
 <script src="../web/my_theme/node_modules/chart.js/dist/Chart.js"></script>
 
 <script src="../web/my_theme/node_modules/fullcalendar/main.js"></script>
+
+
+<!-- include vendor scripts used in "More Elements" page. see "/views//pages/partials/form-more/@vendor-scripts.hbs" -->
+<script src="../web/my_theme/node_modules/bootstrap-star-rating/js/star-rating.js"></script>
+
+<script src="../web/my_theme/node_modules/typeahead.js/dist/typeahead.bundle.js"></script>
+
+<script src="../web/my_theme/node_modules/bootstrap-select/dist/js/bootstrap-select.js"></script>
+
+
+<script src="../web/my_theme/node_modules/select2/dist/js/select2.js"></script>
+<script src="../web/my_theme/node_modules/chosen-js/chosen.jquery.js"></script>
+
+
+<script src="../web/my_theme/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
 
 <!-- include ace.js -->
 <script src="../web/my_theme/dist/js/ace.js"></script>

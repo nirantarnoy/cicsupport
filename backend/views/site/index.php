@@ -130,7 +130,6 @@ $this->title = 'CIC Support';
         </div>
     </div>
 
-
     <div class="col-12 col-sm-6 col-lg-3 my-1 my-lg-0 px-sm-1 px-lg-0">
         <div class="d-flex align-items-center bgc-default-d3 py-3 border-l-3 brc-white-tp2" role="button">
 
@@ -152,10 +151,6 @@ $this->title = 'CIC Support';
         </div>
     </div>
 </div>
-
-
-
-<div id="id-toast-success2">ddd</div>
 
 <div class="row mt-45">
     <div class="col-lg-7 col-12 pl-lg-0 pr-lg-2">
@@ -192,49 +187,49 @@ $this->title = 'CIC Support';
 
 
             <div class="row mb-3 mx-1 px-1">
-                <div class="col-12 col-sm-4 px-0 d-flex justify-content-between d-sm-block">
-                      <span class="text-grey-m1 ml-1">
-                        revenue
-                    </span>
-
-                    <span class="text-success ml-2 mt-2 text-600 text-95 order-last">+4% <i class="fas fa-caret-up"></i></span>
-
-                    <div class="d-sm-block flex-grow-1 text-right text-sm-left">
-                        <span class="text-130 opacity-2">$</span>
-                        <span class="text-secondary-d3 text-160">
-                            46,220
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-4 px-0 d-flex justify-content-between d-sm-block">
-                      <span class="text-grey-m1 ml-1">
-                        expense
-                    </span>
-
-                    <span class="text-orange ml-2 mt-2 text-600 text-95 order-last">+1% <i class="fas fa-caret-down"></i></span>
-
-                    <div class="d-sm-block flex-grow-1 text-right text-sm-left">
-                        <span class="text-130 opacity-2">$</span>
-                        <span class="text-secondary-d3 text-160">
-                            3,500
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-4 px-0 d-flex justify-content-between d-sm-block">
-                      <span class="text-grey-m1 ml-1">
-                        customers
-                    </span>
-
-                    <span class="text-success ml-2 mt-2 text-600 text-95 order-last">+5% <i class="fas fa-caret-up"></i></span>
-
-                    <div class="d-sm-block flex-grow-1 text-right text-sm-left">
-                        <span class="text-secondary-d3 text-160">
-                            315
-                        </span>
-                    </div>
-                </div>
+<!--                <div class="col-12 col-sm-4 px-0 d-flex justify-content-between d-sm-block">-->
+<!--                      <span class="text-grey-m1 ml-1">-->
+<!--                        revenue-->
+<!--                    </span>-->
+<!---->
+<!--                    <span class="text-success ml-2 mt-2 text-600 text-95 order-last">+4% <i class="fas fa-caret-up"></i></span>-->
+<!---->
+<!--                    <div class="d-sm-block flex-grow-1 text-right text-sm-left">-->
+<!--                        <span class="text-130 opacity-2">$</span>-->
+<!--                        <span class="text-secondary-d3 text-160">-->
+<!--                            46,220-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="col-12 col-sm-4 px-0 d-flex justify-content-between d-sm-block">-->
+<!--                      <span class="text-grey-m1 ml-1">-->
+<!--                        expense-->
+<!--                    </span>-->
+<!---->
+<!--                    <span class="text-orange ml-2 mt-2 text-600 text-95 order-last">+1% <i class="fas fa-caret-down"></i></span>-->
+<!---->
+<!--                    <div class="d-sm-block flex-grow-1 text-right text-sm-left">-->
+<!--                        <span class="text-130 opacity-2">$</span>-->
+<!--                        <span class="text-secondary-d3 text-160">-->
+<!--                            3,500-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="col-12 col-sm-4 px-0 d-flex justify-content-between d-sm-block">-->
+<!--                      <span class="text-grey-m1 ml-1">-->
+<!--                        customers-->
+<!--                    </span>-->
+<!---->
+<!--                    <span class="text-success ml-2 mt-2 text-600 text-95 order-last">+5% <i class="fas fa-caret-up"></i></span>-->
+<!---->
+<!--                    <div class="d-sm-block flex-grow-1 text-right text-sm-left">-->
+<!--                        <span class="text-secondary-d3 text-160">-->
+<!--                            315-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div><!-- /.row -->
 
             <div>
@@ -275,7 +270,7 @@ $this->title = 'CIC Support';
                                 สถานะ
                             </th>
                             <th class="border-0 text-secondary-m2">
-                                ความคืบหน้า
+                                คืบหน้า
                             </th>
                         </tr>
                         </thead>
@@ -384,6 +379,8 @@ $this->title = 'CIC Support';
             </div>
         </div>
     </div>
+
+    
 </div>
 
 

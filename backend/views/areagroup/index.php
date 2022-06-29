@@ -13,12 +13,17 @@ $this->title = 'Areagroups';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="areagroup-index">
+    <div class="row">
+        <div class="col-lg-6"> <h3><?= Html::encode($this->title) ?></h3>
+        </div>
+        <div class="col-lg-6" style="text-align: right;">
+            <p>
+                <?= Html::a('Create Area', ['create'], ['class' => 'btn btn-success']) ?>
+            </p>
 
-    <h1><?= Html::encode($this->title) ?></h1>
+        </div>
+    </div>
 
-    <p>
-        <?= Html::a('Create Areagroup', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
