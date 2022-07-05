@@ -5,6 +5,7 @@ use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\AreagroupSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -14,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="areagroup-index">
     <div class="row">
-        <div class="col-lg-6"> <h3><?= Html::encode($this->title) ?></h3>
+        <div class="col-lg-6"><h3><?= Html::encode($this->title) ?></h3>
         </div>
         <div class="col-lg-6" style="text-align: right;">
             <p>
@@ -34,17 +35,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-          //  'id',
+            //  'id',
             'name',
             'seq_sort',
             'status',
 //            'created_at',
-            'area_zone_id',
+            ['attribute' => 'area_zone_id',
+                'value' => function ($data) {
+                    return \backend\models\Areazone::findName($data->area_zone_id);
+                }
+            ],
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action,  $model, $key, $index, $column) {
+                'urlCreator' => function ($action, $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                }
             ],
         ],
     ]); ?>

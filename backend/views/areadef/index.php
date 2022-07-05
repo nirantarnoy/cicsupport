@@ -39,8 +39,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             //'description',
             'sort_seq',
-            'area_group_id',
-            'area_id',
+            ['attribute' => 'area_group_id',
+                'value' => function ($data) {
+                    return \backend\models\Areagroup::findName($data->area_group_id);
+                }
+            ],
+            ['attribute' => 'area_id',
+                'value' => function ($data) {
+                    return \backend\models\Area::findName($data->area_id);
+                }
+            ],
             'status',
             [
                 'class' => ActionColumn::className(),

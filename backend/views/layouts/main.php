@@ -647,6 +647,48 @@ AppAsset::register($this);
                                           </span>
                                         </a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a href="index.php?r=plan" class="nav-link">
+                                          <span class="nav-text">
+                                                  <span>Big cleaning</span>
+                                          </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <b class="sub-arrow"></b>
+                        </li>
+                        <li class="nav-item">
+
+                            <a href="#" class="nav-link dropdown-toggle collapsed">
+                                <i class="nav-icon fa fa-ban"></i>
+                                <span class="nav-text fadeable">
+                                  <span>CAR</span>
+                                </span>
+                                <b class="caret fa fa-angle-left rt-n90"></b>
+                                <!-- or you can use custom icons. first add `d-style` to 'A' -->
+                                <!--
+                                     <b class="caret d-n-collapsed fa fa-minus text-80"></b>
+                                     <b class="caret d-collapsed fa fa-plus text-80"></b>
+                                 -->
+                            </a>
+
+                            <div class="hideable submenu collapse">
+                                <ul class="submenu-inner">
+                                    <li class="nav-item">
+                                        <a href="index.php?r=car" class="nav-link">
+                                          <span class="nav-text">
+                                                  <span>CAR 5ส.</span>
+                                          </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="index.php?r=car" class="nav-link">
+                                          <span class="nav-text">
+                                                  <span>CAR Safety</span>
+                                          </span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                             <b class="sub-arrow"></b>
