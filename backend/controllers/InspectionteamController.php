@@ -70,8 +70,14 @@ class InspectionteamController extends Controller
         $model = new Inspectionteam();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                $module_type_id = \Yii::$app->request->post('module_type_id');
+
+                $model->module_type_id = $module_type_id;
+                if ($model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+
             }
         } else {
             $model->loadDefaultValues();

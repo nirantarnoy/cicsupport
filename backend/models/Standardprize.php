@@ -39,4 +39,8 @@ class Standardprize extends \common\models\StandardPrize {
 
         ];
     }
+    public function findName($emp_id){
+        $model = \backend\models\Standardprize::find()->where(['id'=>$emp_id])->one();
+        return $model !=null?$model->name:'';
+    }
 }

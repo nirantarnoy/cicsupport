@@ -16,7 +16,7 @@ return [
         'assetManager'=>[
           'bundles' => [
               'kartik\form\ActiveFormAsset'=>[
-                  'bsDependencyEnabled'=> true
+                  'bsDependencyEnabled'=> false
               ],
           ]
         ],

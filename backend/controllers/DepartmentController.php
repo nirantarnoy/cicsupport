@@ -131,4 +131,21 @@ class DepartmentController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionSyncdata(){
+        $model_p = \common\models\QryEmpInfoEmpAll::find()->select(['SecName'])->all();
+        if($model_p){
+            foreach ($model_p as $value){
+                $model_check = \backend\models\Department::find()->where(['name'=>$value->SecName])->count();
+                if($model_check)continue;
+
+
+                $model = new \backend\models\Department();
+                $model->name = $value->SecName;
+                $model->status = 1;
+                $model->save(false);
+            }
+        }
+        return $this->redirect('index');
+    }
 }

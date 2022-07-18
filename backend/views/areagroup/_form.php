@@ -10,26 +10,39 @@ $zone_data = \common\models\AreaZone::find()->all();
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col-lg-4">
+            <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-lg-4">
+            <?= $form->field($model, 'seq_sort')->textInput() ?>
+        </div>
+        <div class="col-lg-4">
+            <label for="">โซนพื้นที่</label>
+            <select id="zone-id" data-placeholder="Choose a state..." class="chosen-select form-control" name="area_zone_id_new">
+                <option value=""></option>
+                <?php foreach ($zone_data as $value): ?>
+                    <?php $selected = '';
+                    if ($model->area_zone_id == $value->id) {
+                        $selected = 'selected';
+                    }
+                    ?>
+                    <option value=" <?= $value->id ?>" <?= $selected ?> ><?= $value->name ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <label for="">สถานะ</label> <br />
+            <!--            <input type="checkbox" class="ace-switch input-lg ace-switch-yesno bgc-purple-d1 text-grey-m2" checked />-->
+            <input type="checkbox" class="ace-switch input-lg ace-switch-bars bgc-success-d2" checked />
+        </div>
+    </div>
 
-    <?= $form->field($model, 'seq_sort')->textInput() ?>
 
 
-    <label for="">โซนพื้นที่</label>
-    <select id="" data-placeholder="Choose a state..." class="chosen-select form-control" name="area_zone_id_new">
-        <option value=""></option>
-        <?php foreach ($zone_data as $value): ?>
-            <?php $selected = '';
-            if ($model->area_zone_id == $value->id) {
-                $selected = 'selected';
-            }
-            ?>
-            <option value=" <?= $value->id ?>" <?= $selected ?> ><?= $value->name ?></option>
-        <?php endforeach; ?>
-    </select>
-
-    <?= $form->field($model, 'status')->textInput() ?>
-
+    <?=$form->field($model, 'status')->hiddenInput(['class'=>'area-status'])->label(false) ?>
 
 
     <div class="form-group">
@@ -39,3 +52,26 @@ $zone_data = \common\models\AreaZone::find()->all();
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php
+$this->registerJsFile(\Yii::$app->request->baseUrl . '/js/select2.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$js = <<<JS
+$(function(){
+     $('#zone-id').select2({
+     allowClear: true,
+     });
+     
+});
+function changestatus(e){
+    if(e.is(':checked')){
+       e.prop('checked', true);
+       $(".area-status").val(1);
+    }else {
+       e.prop('checked', false);
+       $(".area-status").val(0);
+    }
+    
+}
+   
+JS;
+$this->registerJs($js, static::POS_END);
+?>

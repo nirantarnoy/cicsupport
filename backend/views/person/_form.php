@@ -14,44 +14,55 @@ use kartik\select2\Select2;
     <?php $form = ActiveForm::begin(); ?>
 
     <div class="row">
-        <div class="col-lg-12">
-            <?= $form->field($model, 'ad_user')->textInput(['maxlength' => true,'readonly'=>'readonly']) ?>
-        </div>
-    </div>
 
+        <div class="col-lg-4">
+            <?= $form->field($model, 'ad_user')->textInput(['maxlength' => true, 'readonly' => 'readonly']) ?>
+        </div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4"></div>
+    </div>
     <div class="row">
-        <div class="col-lg-12">
 
-            <?= $form->field($model, 'prs_no')->widget(Select2::className(),[
-                    'data'=>\yii\helpers\ArrayHelper::map(\common\models\QryEmpInfoEmpAll::find()->all(),'PRS_NO',function($data){
-                        return $data->EMP_NAME.' '.$data->EMP_SURNME.' ['.$data->PRS_NO.']';
-                    }),
-                    'options' => [
-                            'placeholder'=>'เลือกพนักงาน',
-                            'onchange'=>'alert($(this).val())'
-                    ]
-            ])?>
+        <div class="col-lg-4">
+            <label for="">พนักงาน</label>
+            <select id="emp-id" name="emp_id" data-placeholder="Choose a state..." class="chosen-select form-control">
+                <option value=""></option>
+                <?php $data = \yii\helpers\ArrayHelper::map(\backend\models\Employee::find()->all(), 'id', function ($data) {
+                    return $data->fname . ' ' . $data->lname;
+                }); ?>
+                <?php foreach ($data as $key => $value): ?>
+                    <?php $selected = "";
+                    if ($model->emp_id == $key) {
+                        $selected = "selected";
+                    }
+                    ?>
+                    <option value="<?= $key ?>" <?= $selected ?>><?= $value ?></option>
+                <?php endforeach; ?>
+            </select>
 
-            <?= $form->field($model, 'fname')->textInput(['maxlength' => true,'readonly'=>'readonly']) ?>
 
-            <?= $form->field($model, 'lname')->textInput(['maxlength' => true,'readonly'=>'readonly']) ?>
-
-            <?= $form->field($model, 'idcard')->textInput(['maxlength' => true,'readonly'=>'readonly']) ?>
-
-            <?= $form->field($model, 'department_id')->widget(\kartik\select2\Select2::className(),[
-                'data'=>\yii\helpers\ArrayHelper::map(\backend\models\Department::find()->where()->all(),'id','name'),
-                'options' => [
-                    'placeholder'=>'เลือก'
-                ]
-            ]) ?>
-
-            <?= $form->field($model, 'section_id')->textInput() ?>
-
-            <?= $form->field($model, 'status')->textInput() ?>
-
+        </div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4"></div>
+    </div>
+    <div style="height: 10px;"></div>
+    <div class="row">
+        <div class="col-lg-4">
+            <label for="">สถานะ</label> <br/>
+            <!--            <input type="checkbox" class="ace-switch input-lg ace-switch-yesno bgc-purple-d1 text-grey-m2" checked />-->
+            <?php
+            $checked = '';
+            if ($model->status == 1) {
+                $checked = 'checked';
+            }
+            ?>
+            <input type="checkbox" class="ace-switch input-lg ace-switch-bars bgc-success-d2"
+                   onclick="changestatus($(this))" <?= $checked ?>/>
         </div>
     </div>
 
+
+    <?= $form->field($model, 'status')->hiddenInput(['class' => 'area-status'])->label(false) ?>
 
 
     <div class="form-group">
@@ -61,3 +72,26 @@ use kartik\select2\Select2;
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php
+$this->registerJsFile(\Yii::$app->request->baseUrl . '/js/select2.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$js = <<<JS
+$(function(){
+     $('#emp-id').select2({
+     allowClear: true,
+     });
+     
+});
+function changestatus(e){
+    if(e.is(':checked')){
+       e.prop('checked', true);
+       $(".area-status").val(1);
+    }else {
+       e.prop('checked', false);
+       $(".area-status").val(0);
+    }
+    
+}
+   
+JS;
+$this->registerJs($js, static::POS_END);
+?>

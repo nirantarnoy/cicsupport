@@ -6,9 +6,9 @@
 use backend\assets\AppAsset;
 use common\widgets\Alert;
 use yii\bootstrap4\Breadcrumbs;
-use yii\bootstrap4\Html;
-use yii\bootstrap4\Nav;
-use yii\bootstrap4\NavBar;
+//use yii\bootstrap4\Html;
+//use yii\bootstrap4\Nav;
+//use yii\bootstrap4\NavBar;
 
 AppAsset::register($this);
 ?>
@@ -24,44 +24,525 @@ AppAsset::register($this);
         <title>CIC Supports</title>
 
         <!-- include common vendor stylesheets & fontawesome -->
-        <link rel="stylesheet" type="text/css" href="../web/my_theme/node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../my_theme/node_modules/bootstrap/dist/css/bootstrap.css">
 
-        <link rel="stylesheet" type="text/css" href="../web/my_theme/node_modules/@fortawesome/fontawesome-free/css/fontawesome.css">
-        <link rel="stylesheet" type="text/css" href="../web/my_theme/node_modules/@fortawesome/fontawesome-free/css/regular.css">
-        <link rel="stylesheet" type="text/css" href="../web/my_theme/node_modules/@fortawesome/fontawesome-free/css/brands.css">
-        <link rel="stylesheet" type="text/css" href="../web/my_theme/node_modules/@fortawesome/fontawesome-free/css/solid.css">
+        <link rel="stylesheet" type="text/css" href="../my_theme/node_modules/@fortawesome/fontawesome-free/css/fontawesome.css">
+        <link rel="stylesheet" type="text/css" href="../my_theme/node_modules/@fortawesome/fontawesome-free/css/regular.css">
+        <link rel="stylesheet" type="text/css" href="../my_theme/node_modules/@fortawesome/fontawesome-free/css/brands.css">
+        <link rel="stylesheet" type="text/css" href="../my_theme/node_modules/@fortawesome/fontawesome-free/css/solid.css">
 
 
 
         <!-- include vendor stylesheets used in "Horizontal Menu" page. see "/views//pages/partials/horizontal/@vendor-stylesheets.hbs" -->
-        <link rel="stylesheet" type="text/css" href="../web/my_theme/node_modules/fullcalendar/main.css">
+        <link rel="stylesheet" type="text/css" href="../my_theme/node_modules/fullcalendar/main.css">
 
         <!-- include vendor stylesheets used in "More Elements" page. see "/views//pages/partials/form-more/@vendor-stylesheets.hbs" -->
-        <link rel="stylesheet" type="text/css" href="../web/my_theme/node_modules/bootstrap-star-rating/css/star-rating.css">
 
-        <link rel="stylesheet" type="text/css" href="../web/my_theme/node_modules/bootstrap-select/dist/css/bootstrap-select.css">
+        <link rel="stylesheet" type="text/css" href="../my_theme/node_modules/bootstrap-select/dist/css/bootstrap-select.css">
 
-        <link rel="stylesheet" type="text/css" href="../web/my_theme/node_modules/bootstrap-duallistbox/dist/bootstrap-duallistbox.css">
+        <link rel="stylesheet" type="text/css" href="../my_theme/node_modules/bootstrap-duallistbox/dist/bootstrap-duallistbox.css">
 
 
-        <link rel="stylesheet" type="text/css" href="../web/my_theme/node_modules/select2/dist/css/select2.css">
-        <link rel="stylesheet" type="text/css" href="../web/my_theme/node_modules/chosen-js/chosen.css">
+        <link rel="stylesheet" type="text/css" href="../my_theme/node_modules/select2/dist/css/select2.css">
+        <link rel="stylesheet" type="text/css" href="../my_theme/node_modules/chosen-js/chosen.css">
 
         <!-- include fonts -->
-        <link rel="stylesheet" type="text/css" href="../web/my_theme/dist/css/ace-font.css">
+        <link rel="stylesheet" type="text/css" href="../my_theme/dist/css/ace-font.css">
 
 
 
         <!-- ace.css -->
-        <link rel="stylesheet" type="text/css" href="../web/my_theme/dist/css/ace.css">
+        <link rel="stylesheet" type="text/css" href="../my_theme/dist/css/ace.css">
 
 
         <!-- favicon -->
-        <link rel="icon" type="image/png" href="../web/my_theme/assets/favicon.png" />
+        <link rel="icon" type="image/png" href="../my_theme/assets/favicon.png" />
 
         <!-- "Horizontal Menu" page styles, specific to this page for demo only -->
-        <link rel="stylesheet" type="text/css" href="../web/my_theme/views/pages/horizontal/@page-style.css">
-        <link rel="stylesheet" type="text/css" href="../web/my_theme/dist/css/ace-themes.css">
+        <link rel="stylesheet" type="text/css" href="../my_theme/views/pages/horizontal/@page-style.css">
+        <link rel="stylesheet" type="text/css" href="../my_theme/dist/css/ace-themes.css">
+
+        <style>
+            @font-face {
+                font-family: 'SukhumvitSet-Medium';
+                src: url('../my_theme/dist/font/SukhumvitSet-Medium.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            @font-face {
+                font-family: 'SukhumvitSet-Bold';
+                src: url('../my_theme/dist/font/SukhumvitSet-Bold.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            body {
+                font-family: "SukhumvitSet-Medium";
+                font-size: 16px;
+            }
+            /*!
+ * Bootstrap-select v1.13.18 (https://developer.snapappointments.com/bootstrap-select)
+ *
+ * Copyright 2012-2020 SnapAppointments, LLC
+ * Licensed under MIT (https://github.com/snapappointments/bootstrap-select/blob/master/LICENSE)
+ */
+
+            @-webkit-keyframes bs-notify-fadeOut {
+                0% {
+                    opacity: 0.9;
+                }
+                100% {
+                    opacity: 0;
+                }
+            }
+            @-o-keyframes bs-notify-fadeOut {
+                0% {
+                    opacity: 0.9;
+                }
+                100% {
+                    opacity: 0;
+                }
+            }
+            @keyframes bs-notify-fadeOut {
+                0% {
+                    opacity: 0.9;
+                }
+                100% {
+                    opacity: 0;
+                }
+            }
+            select.bs-select-hidden,
+            .bootstrap-select > select.bs-select-hidden,
+            select.selectpicker {
+                display: none !important;
+            }
+            .bootstrap-select {
+                width: 220px \0;
+                /*IE9 and below*/
+                vertical-align: middle;
+            }
+            .bootstrap-select > .dropdown-toggle {
+                position: relative;
+                width: 100%;
+                text-align: right;
+                white-space: nowrap;
+                display: -webkit-inline-box;
+                display: -webkit-inline-flex;
+                display: -ms-inline-flexbox;
+                display: inline-flex;
+                -webkit-box-align: center;
+                -webkit-align-items: center;
+                -ms-flex-align: center;
+                align-items: center;
+                -webkit-box-pack: justify;
+                -webkit-justify-content: space-between;
+                -ms-flex-pack: justify;
+                justify-content: space-between;
+            }
+            .bootstrap-select > .dropdown-toggle:after {
+                margin-top: -1px;
+            }
+            .bootstrap-select > .dropdown-toggle.bs-placeholder,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder:hover,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder:focus,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder:active {
+                color: #999;
+            }
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-primary,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-secondary,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-success,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-danger,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-info,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-dark,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-primary:hover,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-secondary:hover,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-success:hover,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-danger:hover,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-info:hover,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-dark:hover,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-primary:focus,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-secondary:focus,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-success:focus,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-danger:focus,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-info:focus,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-dark:focus,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-primary:active,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-secondary:active,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-success:active,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-danger:active,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-info:active,
+            .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-dark:active {
+                color: rgba(255, 255, 255, 0.5);
+            }
+            .bootstrap-select > select {
+                position: absolute !important;
+                bottom: 0;
+                left: 50%;
+                display: block !important;
+                width: 0.5px !important;
+                height: 100% !important;
+                padding: 0 !important;
+                opacity: 0 !important;
+                border: none;
+                z-index: 0 !important;
+            }
+            .bootstrap-select > select.mobile-device {
+                top: 0;
+                left: 0;
+                display: block !important;
+                width: 100% !important;
+                z-index: 2 !important;
+            }
+            .has-error .bootstrap-select .dropdown-toggle,
+            .error .bootstrap-select .dropdown-toggle,
+            .bootstrap-select.is-invalid .dropdown-toggle,
+            .was-validated .bootstrap-select select:invalid + .dropdown-toggle {
+                border-color: #b94a48;
+            }
+            .bootstrap-select.is-valid .dropdown-toggle,
+            .was-validated .bootstrap-select select:valid + .dropdown-toggle {
+                border-color: #28a745;
+            }
+            .bootstrap-select.fit-width {
+                width: auto !important;
+            }
+            .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+                width: 220px;
+            }
+            .bootstrap-select > select.mobile-device:focus + .dropdown-toggle,
+            .bootstrap-select .dropdown-toggle:focus {
+                outline: thin dotted #333333 !important;
+                outline: 5px auto -webkit-focus-ring-color !important;
+                outline-offset: -2px;
+            }
+            .bootstrap-select.form-control {
+                margin-bottom: 0;
+                padding: 0;
+                border: none;
+                height: auto;
+            }
+            :not(.input-group) > .bootstrap-select.form-control:not([class*="col-"]) {
+                width: 100%;
+            }
+            .bootstrap-select.form-control.input-group-btn {
+                float: none;
+                z-index: auto;
+            }
+            .form-inline .bootstrap-select,
+            .form-inline .bootstrap-select.form-control:not([class*="col-"]) {
+                width: auto;
+            }
+            .bootstrap-select:not(.input-group-btn),
+            .bootstrap-select[class*="col-"] {
+                float: none;
+                display: inline-block;
+                margin-left: 0;
+            }
+            .bootstrap-select.dropdown-menu-right,
+            .bootstrap-select[class*="col-"].dropdown-menu-right,
+            .row .bootstrap-select[class*="col-"].dropdown-menu-right {
+                float: right;
+            }
+            .form-inline .bootstrap-select,
+            .form-horizontal .bootstrap-select,
+            .form-group .bootstrap-select {
+                margin-bottom: 0;
+            }
+            .form-group-lg .bootstrap-select.form-control,
+            .form-group-sm .bootstrap-select.form-control {
+                padding: 0;
+            }
+            .form-group-lg .bootstrap-select.form-control .dropdown-toggle,
+            .form-group-sm .bootstrap-select.form-control .dropdown-toggle {
+                height: 100%;
+                font-size: inherit;
+                line-height: inherit;
+                border-radius: inherit;
+            }
+            .bootstrap-select.form-control-sm .dropdown-toggle,
+            .bootstrap-select.form-control-lg .dropdown-toggle {
+                font-size: inherit;
+                line-height: inherit;
+                border-radius: inherit;
+            }
+            .bootstrap-select.form-control-sm .dropdown-toggle {
+                padding: 0.25rem 0.5rem;
+            }
+            .bootstrap-select.form-control-lg .dropdown-toggle {
+                padding: 0.5rem 1rem;
+            }
+            .form-inline .bootstrap-select .form-control {
+                width: 100%;
+            }
+            .bootstrap-select.disabled,
+            .bootstrap-select > .disabled {
+                cursor: not-allowed;
+            }
+            .bootstrap-select.disabled:focus,
+            .bootstrap-select > .disabled:focus {
+                outline: none !important;
+            }
+            .bootstrap-select.bs-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 0 !important;
+                padding: 0 !important;
+            }
+            .bootstrap-select.bs-container .dropdown-menu {
+                z-index: 1060;
+            }
+            .bootstrap-select .dropdown-toggle .filter-option {
+                position: static;
+                top: 0;
+                left: 0;
+                float: left;
+                height: 100%;
+                width: 100%;
+                text-align: left;
+                overflow: hidden;
+                -webkit-box-flex: 0;
+                -webkit-flex: 0 1 auto;
+                -ms-flex: 0 1 auto;
+                flex: 0 1 auto;
+            }
+            .bs3.bootstrap-select .dropdown-toggle .filter-option {
+                padding-right: inherit;
+            }
+            .input-group .bs3-has-addon.bootstrap-select .dropdown-toggle .filter-option {
+                position: absolute;
+                padding-top: inherit;
+                padding-bottom: inherit;
+                padding-left: inherit;
+                float: none;
+            }
+            .input-group .bs3-has-addon.bootstrap-select .dropdown-toggle .filter-option .filter-option-inner {
+                padding-right: inherit;
+            }
+            .bootstrap-select .dropdown-toggle .filter-option-inner-inner {
+                overflow: hidden;
+            }
+            .bootstrap-select .dropdown-toggle .filter-expand {
+                width: 0 !important;
+                float: left;
+                opacity: 0 !important;
+                overflow: hidden;
+            }
+            .bootstrap-select .dropdown-toggle .caret {
+                position: absolute;
+                top: 50%;
+                right: 12px;
+                margin-top: -2px;
+                vertical-align: middle;
+            }
+            .input-group .bootstrap-select.form-control .dropdown-toggle {
+                border-radius: inherit;
+            }
+            .bootstrap-select[class*="col-"] .dropdown-toggle {
+                width: 100%;
+            }
+            .bootstrap-select .dropdown-menu {
+                min-width: 100%;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+            .bootstrap-select .dropdown-menu > .inner:focus {
+                outline: none !important;
+            }
+            .bootstrap-select .dropdown-menu.inner {
+                position: static;
+                float: none;
+                border: 0;
+                padding: 0;
+                margin: 0;
+                border-radius: 0;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+            }
+            .bootstrap-select .dropdown-menu li {
+                position: relative;
+            }
+            .bootstrap-select .dropdown-menu li.active small {
+                color: rgba(255, 255, 255, 0.5) !important;
+            }
+            .bootstrap-select .dropdown-menu li.disabled a {
+                cursor: not-allowed;
+            }
+            .bootstrap-select .dropdown-menu li a {
+                cursor: pointer;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+            .bootstrap-select .dropdown-menu li a.opt {
+                position: relative;
+                padding-left: 2.25em;
+            }
+            .bootstrap-select .dropdown-menu li a span.check-mark {
+                display: none;
+            }
+            .bootstrap-select .dropdown-menu li a span.text {
+                display: inline-block;
+            }
+            .bootstrap-select .dropdown-menu li small {
+                padding-left: 0.5em;
+            }
+            .bootstrap-select .dropdown-menu .notify {
+                position: absolute;
+                bottom: 5px;
+                width: 96%;
+                margin: 0 2%;
+                min-height: 26px;
+                padding: 3px 5px;
+                background: #f5f5f5;
+                border: 1px solid #e3e3e3;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+                pointer-events: none;
+                opacity: 0.9;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+            .bootstrap-select .dropdown-menu .notify.fadeOut {
+                -webkit-animation: 300ms linear 750ms forwards bs-notify-fadeOut;
+                -o-animation: 300ms linear 750ms forwards bs-notify-fadeOut;
+                animation: 300ms linear 750ms forwards bs-notify-fadeOut;
+            }
+            .bootstrap-select .no-results {
+                padding: 3px;
+                background: #f5f5f5;
+                margin: 0 5px;
+                white-space: nowrap;
+            }
+            .bootstrap-select.fit-width .dropdown-toggle .filter-option {
+                position: static;
+                display: inline;
+                padding: 0;
+            }
+            .bootstrap-select.fit-width .dropdown-toggle .filter-option-inner,
+            .bootstrap-select.fit-width .dropdown-toggle .filter-option-inner-inner {
+                display: inline;
+            }
+            .bootstrap-select.fit-width .dropdown-toggle .bs-caret:before {
+                content: '\00a0';
+            }
+            .bootstrap-select.fit-width .dropdown-toggle .caret {
+                position: static;
+                top: auto;
+                margin-top: -1px;
+            }
+            .bootstrap-select.show-tick .dropdown-menu .selected span.check-mark {
+                position: absolute;
+                display: inline-block;
+                right: 15px;
+                top: 5px;
+            }
+            .bootstrap-select.show-tick .dropdown-menu li a span.text {
+                margin-right: 34px;
+            }
+            .bootstrap-select .bs-ok-default:after {
+                content: '';
+                display: block;
+                width: 0.5em;
+                height: 1em;
+                border-style: solid;
+                border-width: 0 0.26em 0.26em 0;
+                -webkit-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                -o-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+            .bootstrap-select.show-menu-arrow.open > .dropdown-toggle,
+            .bootstrap-select.show-menu-arrow.show > .dropdown-toggle {
+                z-index: 1061;
+            }
+            .bootstrap-select.show-menu-arrow .dropdown-toggle .filter-option:before {
+                content: '';
+                border-left: 7px solid transparent;
+                border-right: 7px solid transparent;
+                border-bottom: 7px solid rgba(204, 204, 204, 0.2);
+                position: absolute;
+                bottom: -4px;
+                left: 9px;
+                display: none;
+            }
+            .bootstrap-select.show-menu-arrow .dropdown-toggle .filter-option:after {
+                content: '';
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+                border-bottom: 6px solid white;
+                position: absolute;
+                bottom: -4px;
+                left: 10px;
+                display: none;
+            }
+            .bootstrap-select.show-menu-arrow.dropup .dropdown-toggle .filter-option:before {
+                bottom: auto;
+                top: -4px;
+                border-top: 7px solid rgba(204, 204, 204, 0.2);
+                border-bottom: 0;
+            }
+            .bootstrap-select.show-menu-arrow.dropup .dropdown-toggle .filter-option:after {
+                bottom: auto;
+                top: -4px;
+                border-top: 6px solid white;
+                border-bottom: 0;
+            }
+            .bootstrap-select.show-menu-arrow.pull-right .dropdown-toggle .filter-option:before {
+                right: 12px;
+                left: auto;
+            }
+            .bootstrap-select.show-menu-arrow.pull-right .dropdown-toggle .filter-option:after {
+                right: 13px;
+                left: auto;
+            }
+            .bootstrap-select.show-menu-arrow.open > .dropdown-toggle .filter-option:before,
+            .bootstrap-select.show-menu-arrow.show > .dropdown-toggle .filter-option:before,
+            .bootstrap-select.show-menu-arrow.open > .dropdown-toggle .filter-option:after,
+            .bootstrap-select.show-menu-arrow.show > .dropdown-toggle .filter-option:after {
+                display: block;
+            }
+            .bs-searchbox,
+            .bs-actionsbox,
+            .bs-donebutton {
+                padding: 4px 8px;
+            }
+            .bs-actionsbox {
+                width: 100%;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+            .bs-actionsbox .btn-group button {
+                width: 50%;
+            }
+            .bs-donebutton {
+                float: left;
+                width: 100%;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+            .bs-donebutton .btn-group button {
+                width: 100%;
+            }
+            .bs-searchbox + .bs-actionsbox {
+                padding: 0 8px 4px;
+            }
+            .bs-searchbox .form-control {
+                margin-bottom: 0;
+                width: 100%;
+                float: none;
+            }
+            /*# sourceMappingURL=bootstrap-select.css.map */
+
+        </style>
 
     </head>
 <body class="d-flex flex-column h-100">
@@ -153,112 +634,112 @@ AppAsset::register($this);
 
                                     <div class="tab-content tab-sliding p-0">
 
-                                        <div class="tab-pane mh-none show active px-md-1 pt-1" id="navbar-notif-tab-1" role="tabpanel">
+<!--                                        <div class="tab-pane mh-none show active px-md-1 pt-1" id="navbar-notif-tab-1" role="tabpanel">-->
+<!---->
+<!--                                            <a href="#" class="mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">-->
+<!--                                                <i class="fab fa-twitter bgc-blue-tp1 text-white text-110 mr-15 p-2 radius-1"></i>-->
+<!--                                                <span class="text-muted">Followers</span>-->
+<!--                                                <span class="float-right badge badge-danger radius-round text-80">- 4</span>-->
+<!--                                            </a>-->
+<!--                                            <a href="#" class="mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">-->
+<!--                                                <i class="fa fa-comment bgc-pink-tp1 text-white text-110 mr-15 p-2 radius-1"></i>-->
+<!--                                                <span class="text-muted">New Comments</span>-->
+<!--                                                <span class="float-right badge badge-info radius-round text-80">+12</span>-->
+<!--                                            </a>-->
+<!--                                            <a href="#" class="mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">-->
+<!--                                                <i class="fa fa-shopping-cart bgc-success-tp1 text-white text-110 mr-15 p-2 radius-1"></i>-->
+<!--                                                <span class="text-muted">New Orders</span>-->
+<!--                                                <span class="float-right badge badge-success radius-round text-80">+8</span>-->
+<!--                                            </a>-->
+<!--                                            <a href="#" class="mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">-->
+<!--                                                <i class="far fa-clock bgc-purple-tp1 text-white text-110 mr-15 p-2 radius-1"></i>-->
+<!--                                                <span class="text-muted">Finished processing data!</span>-->
+<!--                                            </a>-->
+<!---->
+<!--                                            <hr class="mt-1 mb-1px brc-secondary-l2" />-->
+<!--                                            <a href="#" class="mb-0 py-3 border-0 list-group-item text-blue text-uppercase text-center text-85 font-bolder">-->
+<!--                                                See All Notifications-->
+<!--                                                <i class="ml-2 fa fa-arrow-right text-muted"></i>-->
+<!--                                            </a>-->
+<!---->
+<!--                                        </div><!-- .tab-pane : notifications -->-->
 
-                                            <a href="#" class="mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">
-                                                <i class="fab fa-twitter bgc-blue-tp1 text-white text-110 mr-15 p-2 radius-1"></i>
-                                                <span class="text-muted">Followers</span>
-                                                <span class="float-right badge badge-danger radius-round text-80">- 4</span>
-                                            </a>
-                                            <a href="#" class="mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">
-                                                <i class="fa fa-comment bgc-pink-tp1 text-white text-110 mr-15 p-2 radius-1"></i>
-                                                <span class="text-muted">New Comments</span>
-                                                <span class="float-right badge badge-info radius-round text-80">+12</span>
-                                            </a>
-                                            <a href="#" class="mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">
-                                                <i class="fa fa-shopping-cart bgc-success-tp1 text-white text-110 mr-15 p-2 radius-1"></i>
-                                                <span class="text-muted">New Orders</span>
-                                                <span class="float-right badge badge-success radius-round text-80">+8</span>
-                                            </a>
-                                            <a href="#" class="mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">
-                                                <i class="far fa-clock bgc-purple-tp1 text-white text-110 mr-15 p-2 radius-1"></i>
-                                                <span class="text-muted">Finished processing data!</span>
-                                            </a>
 
-                                            <hr class="mt-1 mb-1px brc-secondary-l2" />
-                                            <a href="#" class="mb-0 py-3 border-0 list-group-item text-blue text-uppercase text-center text-85 font-bolder">
-                                                See All Notifications
-                                                <i class="ml-2 fa fa-arrow-right text-muted"></i>
-                                            </a>
-
-                                        </div><!-- .tab-pane : notifications -->
-
-
-                                        <div class="tab-pane mh-none pl-md-2" id="navbar-notif-tab-2" role="tabpanel">
-                                            <div data-ace-scroll='{"ignore": "mobile", "height": 300, "smooth":true}'>
-                                                <a href="#" class="d-flex mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">
-                                                    <img alt="Alex's avatar" src="assets/image/avatar/avatar.png" width="48" class="align-self-start border-2 brc-primary-m3 p-1px mr-2 radius-round" />
-                                                    <div>
-                                                        <span class="text-primary-m1 font-bolder">Alex:</span>
-                                                        <span class="text-grey text-90">Ciao sociis natoque penatibus et auctor ...</span>
-                                                        <br />
-                                                        <span class="text-grey-m1 text-85">
-                                                  <i class="far fa-clock"></i>
-                                                  a moment ago
-                                              </span>
-                                                    </div>
-                                                </a>
-                                                <hr class="my-1px brc-grey-l3" />
-                                                <a href="#" class="d-flex mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">
-                                                    <img alt="Susan's avatar" src="assets/image/avatar/avatar3.png" width="48" class="align-self-start border-2 brc-primary-m3 p-1px mr-2 radius-round" />
-                                                    <div>
-                                                        <span class="text-primary-m1 font-bolder">Susan:</span>
-                                                        <span class="text-grey text-90">Vestibulum id ligula porta felis euismod ...</span>
-                                                        <br />
-                                                        <span class="text-grey-m1 text-85">
-                                                  <i class="far fa-clock"></i>
-                                                  20 minutes ago
-                                              </span>
-                                                    </div>
-                                                </a>
-                                                <hr class="my-1px brc-grey-l3" />
-                                                <a href="#" class="d-flex mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">
-                                                    <img alt="Bob's avatar" src="assets/image/avatar/avatar4.png" width="48" class="align-self-start border-2 brc-primary-m3 p-1px mr-2 radius-round" />
-                                                    <div>
-                                                        <span class="text-primary-m1 font-bolder">Bob:</span>
-                                                        <span class="text-grey text-90">Nullam quis risus eget urna mollis ornare ...</span>
-                                                        <br />
-                                                        <span class="text-grey-m1 text-85">
-                                                  <i class="far fa-clock"></i>
-                                                  3:15 pm
-                                              </span>
-                                                    </div>
-                                                </a>
-                                                <hr class="my-1px brc-grey-l3" />
-                                                <a href="#" class="d-flex mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">
-                                                    <img alt="Kate's avatar" src="assets/image/avatar/avatar2.png" width="48" class="align-self-start border-2 brc-primary-m3 p-1px mr-2 radius-round" />
-                                                    <div>
-                                                        <span class="text-primary-m1 font-bolder">Kate:</span>
-                                                        <span class="text-grey text-90">Ciao sociis natoque eget urna mollis ornare ...</span>
-                                                        <br />
-                                                        <span class="text-grey-m1 text-85">
-                                                  <i class="far fa-clock"></i>
-                                                  1:33 pm
-                                              </span>
-                                                    </div>
-                                                </a>
-                                                <hr class="my-1px brc-grey-l3" />
-                                                <a href="#" class="d-flex mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">
-                                                    <img alt="Fred's avatar" src="assets/image/avatar/avatar5.png" width="48" class="align-self-start border-2 brc-primary-m3 p-1px mr-2 radius-round" />
-                                                    <div>
-                                                        <span class="text-primary-m1 font-bolder">Fred:</span>
-                                                        <span class="text-grey text-90">Vestibulum id penatibus et auctor  ...</span>
-                                                        <br />
-                                                        <span class="text-grey-m1 text-85">
-                                                  <i class="far fa-clock"></i>
-                                                  10:09 am
-                                              </span>
-                                                    </div>
-                                                </a>
-
-                                            </div><!-- ace-scroll -->
-
-                                            <hr class="my-1px brc-secondary-l2 border-double" />
-                                            <a href="html/page-inbox.html" class="mb-0 py-3 border-0 list-group-item text-purple text-uppercase text-center text-85 font-bolder">
-                                                See All Messages
-                                                <i class="ml-2 fa fa-arrow-right text-muted"></i>
-                                            </a>
-                                        </div><!-- .tab-pane : messages -->
+<!--                                        <div class="tab-pane mh-none pl-md-2" id="navbar-notif-tab-2" role="tabpanel">-->
+<!--                                            <div data-ace-scroll='{"ignore": "mobile", "height": 300, "smooth":true}'>-->
+<!--                                                <a href="#" class="d-flex mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">-->
+<!--                                                    <img alt="Alex's avatar" src="assets/image/avatar/avatar.png" width="48" class="align-self-start border-2 brc-primary-m3 p-1px mr-2 radius-round" />-->
+<!--                                                    <div>-->
+<!--                                                        <span class="text-primary-m1 font-bolder">Alex:</span>-->
+<!--                                                        <span class="text-grey text-90">Ciao sociis natoque penatibus et auctor ...</span>-->
+<!--                                                        <br />-->
+<!--                                                        <span class="text-grey-m1 text-85">-->
+<!--                                                  <i class="far fa-clock"></i>-->
+<!--                                                  a moment ago-->
+<!--                                              </span>-->
+<!--                                                    </div>-->
+<!--                                                </a>-->
+<!--                                                <hr class="my-1px brc-grey-l3" />-->
+<!--                                                <a href="#" class="d-flex mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">-->
+<!--                                                    <img alt="Susan's avatar" src="assets/image/avatar/avatar3.png" width="48" class="align-self-start border-2 brc-primary-m3 p-1px mr-2 radius-round" />-->
+<!--                                                    <div>-->
+<!--                                                        <span class="text-primary-m1 font-bolder">Susan:</span>-->
+<!--                                                        <span class="text-grey text-90">Vestibulum id ligula porta felis euismod ...</span>-->
+<!--                                                        <br />-->
+<!--                                                        <span class="text-grey-m1 text-85">-->
+<!--                                                  <i class="far fa-clock"></i>-->
+<!--                                                  20 minutes ago-->
+<!--                                              </span>-->
+<!--                                                    </div>-->
+<!--                                                </a>-->
+<!--                                                <hr class="my-1px brc-grey-l3" />-->
+<!--                                                <a href="#" class="d-flex mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">-->
+<!--                                                    <img alt="Bob's avatar" src="assets/image/avatar/avatar4.png" width="48" class="align-self-start border-2 brc-primary-m3 p-1px mr-2 radius-round" />-->
+<!--                                                    <div>-->
+<!--                                                        <span class="text-primary-m1 font-bolder">Bob:</span>-->
+<!--                                                        <span class="text-grey text-90">Nullam quis risus eget urna mollis ornare ...</span>-->
+<!--                                                        <br />-->
+<!--                                                        <span class="text-grey-m1 text-85">-->
+<!--                                                  <i class="far fa-clock"></i>-->
+<!--                                                  3:15 pm-->
+<!--                                              </span>-->
+<!--                                                    </div>-->
+<!--                                                </a>-->
+<!--                                                <hr class="my-1px brc-grey-l3" />-->
+<!--                                                <a href="#" class="d-flex mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">-->
+<!--                                                    <img alt="Kate's avatar" src="assets/image/avatar/avatar2.png" width="48" class="align-self-start border-2 brc-primary-m3 p-1px mr-2 radius-round" />-->
+<!--                                                    <div>-->
+<!--                                                        <span class="text-primary-m1 font-bolder">Kate:</span>-->
+<!--                                                        <span class="text-grey text-90">Ciao sociis natoque eget urna mollis ornare ...</span>-->
+<!--                                                        <br />-->
+<!--                                                        <span class="text-grey-m1 text-85">-->
+<!--                                                  <i class="far fa-clock"></i>-->
+<!--                                                  1:33 pm-->
+<!--                                              </span>-->
+<!--                                                    </div>-->
+<!--                                                </a>-->
+<!--                                                <hr class="my-1px brc-grey-l3" />-->
+<!--                                                <a href="#" class="d-flex mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">-->
+<!--                                                    <img alt="Fred's avatar" src="assets/image/avatar/avatar5.png" width="48" class="align-self-start border-2 brc-primary-m3 p-1px mr-2 radius-round" />-->
+<!--                                                    <div>-->
+<!--                                                        <span class="text-primary-m1 font-bolder">Fred:</span>-->
+<!--                                                        <span class="text-grey text-90">Vestibulum id penatibus et auctor  ...</span>-->
+<!--                                                        <br />-->
+<!--                                                        <span class="text-grey-m1 text-85">-->
+<!--                                                  <i class="far fa-clock"></i>-->
+<!--                                                  10:09 am-->
+<!--                                              </span>-->
+<!--                                                    </div>-->
+<!--                                                </a>-->
+<!---->
+<!--                                            </div><!-- ace-scroll -->-->
+<!---->
+<!--                                            <hr class="my-1px brc-secondary-l2 border-double" />-->
+<!--                                            <a href="html/page-inbox.html" class="mb-0 py-3 border-0 list-group-item text-purple text-uppercase text-center text-85 font-bolder">-->
+<!--                                                See All Messages-->
+<!--                                                <i class="ml-2 fa fa-arrow-right text-muted"></i>-->
+<!--                                            </a>-->
+<!--                                        </div><!-- .tab-pane : messages -->-->
 
                                     </div>
                                 </div>
@@ -278,9 +759,10 @@ AppAsset::register($this);
 
                             <li class="nav-item dropdown order-first order-lg-last dropdown-hover">
                                 <a class="nav-link dropdown-toggle px-lg-2 ml-lg-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <img id="id-navbar-user-image" class="d-none d-lg-inline-block radius-3px mr-1 brc-grey-m2 border-1" src="../web/my_theme/assets/image/avatar/avatar2.jpg" height="42" alt="User's Photo">
+                                    <img id="id-navbar-user-image" class="d-none d-lg-inline-block radius-3px mr-1 brc-grey-m2 border-1" src="../my_theme/assets/image/avatar/avatar2.jpg" height="42" alt="User's Photo">
 
-                                    <span class="d-inline-block d-lg-none">Welcome, Admin</span><!-- show only on mobile -->
+                                    <span class="d-inline-block d-lg-none">Welcome, Admin</span>
+                                    <!-- show only on mobile -->
 
                                     <i class="caret fa fa-ellipsis-v d-none d-xl-block"></i>
                                     <i class="caret fa fa-angle-left d-block d-lg-none"></i>
@@ -795,47 +1277,47 @@ AppAsset::register($this);
 </div>
 
 <!-- include common vendor scripts used in demo pages -->
-<script src="../web/my_theme/node_modules/jquery/dist/jquery.js"></script>
-<script src="../web/my_theme/node_modules/popper.js/dist/umd/popper.js"></script>
-<script src="../web/my_theme/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../my_theme/node_modules/jquery/dist/jquery.js"></script>
+<script src="../my_theme/node_modules/popper.js/dist/umd/popper.js"></script>
+<script src="../my_theme/node_modules/bootstrap/dist/js/bootstrap.js"></script>
 
 <!-- include vendor scripts used in "Alerts" page. see "/views//pages/partials/alerts/@vendor-scripts.hbs" -->
-<script src="../web/my_theme/node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
-<script src="../web/my_theme/node_modules/interactjs/dist/interact.js"></script>
+<script src="../my_theme/node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
+<script src="../my_theme/node_modules/interactjs/dist/interact.js"></script>
 
 <!-- include vendor scripts used in "Horizontal Menu" page. see "/views//pages/partials/horizontal/@vendor-scripts.hbs" -->
-<script src="../web/my_theme/node_modules/chart.js/dist/Chart.js"></script>
+<script src="../my_theme/node_modules/chart.js/dist/Chart.js"></script>
 
-<script src="../web/my_theme/node_modules/fullcalendar/main.js"></script>
+<script src="../my_theme/node_modules/fullcalendar/main.js"></script>
 
 
 <!-- include vendor scripts used in "More Elements" page. see "/views//pages/partials/form-more/@vendor-scripts.hbs" -->
-<script src="../web/my_theme/node_modules/bootstrap-star-rating/js/star-rating.js"></script>
 
-<script src="../web/my_theme/node_modules/typeahead.js/dist/typeahead.bundle.js"></script>
-
-<script src="../web/my_theme/node_modules/bootstrap-select/dist/js/bootstrap-select.js"></script>
+<script src="../my_theme/node_modules/typeahead.js/dist/typeahead.bundle.js"></script>
+<script src="../my_theme/node_modules/bootstrap-select/dist/js/bootstrap-select.js"></script>
 
 
-<script src="../web/my_theme/node_modules/select2/dist/js/select2.js"></script>
-<script src="../web/my_theme/node_modules/chosen-js/chosen.jquery.js"></script>
+<script src="../my_theme/node_modules/select2/dist/js/select2.js"></script>
+<script src="../my_theme/node_modules/chosen-js/chosen.jquery.js"></script>
 
 
-<script src="../web/my_theme/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
+<script src="../my_theme/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
 
 <!-- include ace.js -->
-<script src="../web/my_theme/dist/js/ace.js"></script>
+<script src="../my_theme/dist/js/ace.js"></script>
 
 
 
 <!-- demo.js is only for Ace's demo and you shouldn't use it -->
-<script src="../web/my_theme/app/browser/demo.js"></script>
+<!--<script src="../web/my_theme/app/browser/demo.js"></script>-->
 
 
 <!-- "Horizontal Menu" page script to enable its demo functionality -->
-<script src="../web/my_theme/views/pages/horizontal/@page-script.js"></script>
+<script src="../my_theme/views/pages/horizontal/@page-script.js"></script>
+<!--<script src="../my_theme/views/pages/form-more/@page-script.js"></script>-->
 
 <script>
+
     $('#id-toast-success2').on('click', function() {
         $.aceToaster.add({
             placement: 'rc',
@@ -888,7 +1370,9 @@ AppAsset::register($this);
             bodyClass: 'border-0 p-0',
             headerClass: 'd-none'
         })
-    })
+    });
+
+
 </script>
 
 <?php $this->endBody() ?>

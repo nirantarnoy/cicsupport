@@ -39,4 +39,8 @@ class Inspectiontopic extends \common\models\InspectionTopic {
 
         ];
     }
+    public function findName($id){
+        $model = \backend\models\Inspectiontopic::find()->where(['id'=>$id])->one();
+        return $model !=null?$model->name:'';
+    }
 }
