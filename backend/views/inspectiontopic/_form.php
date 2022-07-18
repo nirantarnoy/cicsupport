@@ -16,8 +16,6 @@ $module_data = \backend\helpers\ModuleType::asArrayObject();
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
-
     <?= $form->field($model, 'seq_sort')->textInput() ?>
 
     <label for="">ประเภทกิจกรรม</label>
@@ -32,6 +30,18 @@ $module_data = \backend\helpers\ModuleType::asArrayObject();
             <option value=" <?= $module_data[$i]['id'] ?>" <?= $selected ?> ><?= $module_data[$i]['name'] ?></option>
         <?php endfor; ?>
     </select>
+
+
+    <label for="">สถานะ</label> <br/>
+    <!--            <input type="checkbox" class="ace-switch input-lg ace-switch-yesno bgc-purple-d1 text-grey-m2" checked />-->
+    <?php
+    $checked = '';
+    if ($model->status == 1) {
+        $checked = 'checked';
+    }
+    ?>
+    <input type="checkbox" class="ace-switch input-lg ace-switch-bars bgc-success-d2"
+           onclick="changestatus($(this))" <?= $checked ?>/>
     <br />
 
     <div class="form-group">

@@ -32,9 +32,16 @@ use yii\widgets\ActiveForm;
 
     <div class="row">
         <div class="col-lg-4">
-            <label for="">สถานะ</label> <br />
+            <label for="">สถานะ</label> <br/>
             <!--            <input type="checkbox" class="ace-switch input-lg ace-switch-yesno bgc-purple-d1 text-grey-m2" checked />-->
-            <input type="checkbox" class="ace-switch input-lg ace-switch-bars bgc-success-d2" checked />
+            <?php
+            $checked = '';
+            if ($model->status == 1) {
+                $checked = 'checked';
+            }
+            ?>
+            <input type="checkbox" class="ace-switch input-lg ace-switch-bars bgc-success-d2"
+                   onclick="changestatus($(this))" <?= $checked ?>/>
         </div>
     </div>
 

@@ -24,7 +24,16 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_card_no')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <label for="">สถานะ</label> <br/>
+    <!--            <input type="checkbox" class="ace-switch input-lg ace-switch-yesno bgc-purple-d1 text-grey-m2" checked />-->
+    <?php
+    $checked = '';
+    if ($model->status == 1) {
+        $checked = 'checked';
+    }
+    ?>
+    <input type="checkbox" class="ace-switch input-lg ace-switch-bars bgc-success-d2"
+           onclick="changestatus($(this))" <?= $checked ?>/>
 
     <?= $form->field($model, 'created_at')->textInput() ?>
 
