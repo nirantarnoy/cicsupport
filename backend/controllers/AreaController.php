@@ -73,9 +73,20 @@ class AreaController extends Controller
             if ($model->load($this->request->post())) {
                 $group_id_new = \Yii::$app->request->post('area_group_id_new');
                 $std_prize_id_new = \Yii::$app->request->post('std_prize_id_new');
+                $module_use = \Yii::$app->request->post('module_use');
+
+
                 $model->area_group_id = $group_id_new;
                 $model->std_prize_id = $std_prize_id_new;
                 if($model->save(false)){
+                    if(count($module_use)>0){
+                        for($i=0;$i<=count($module_use)-1;$i++){
+                            $model_module = new \common\models\AreaModuleCheck();
+                            $model_module->area_id = $model->id;
+                            $model_module->module_id = $module_use[$i];
+                            $model_module->save(false);
+                        }
+                    }
                     return $this->redirect(['view', 'id' => $model->id]);
                 }
             }
@@ -98,19 +109,36 @@ class AreaController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model_area_module = \common\models\AreaModuleCheck::find()->where(['area_id'=>$id])->all();
+        $data = [];
+        foreach ($model_area_module as $x){
+            array_push($data, $x->module_id);
+        }
 
         if ($this->request->isPost && $model->load($this->request->post())) {
             $group_id_new = \Yii::$app->request->post('area_group_id_new');
             $std_prize_id_new = \Yii::$app->request->post('std_prize_id_new');
+            $module_use = \Yii::$app->request->post('module_use');
+
             $model->area_group_id = $group_id_new;
             $model->std_prize_id = $std_prize_id_new;
             if($model->save(false)){
+                if(count($module_use)>0){
+                    \common\models\AreaModuleCheck::deleteAll(['area_id'=>$model->id]);
+                    for($i=0;$i<=count($module_use)-1;$i++){
+                        $model_module = new \common\models\AreaModuleCheck();
+                        $model_module->area_id = $model->id;
+                        $model_module->module_id = $module_use[$i];
+                        $model_module->save(false);
+                    }
+                }
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
 
         return $this->render('update', [
             'model' => $model,
+            'model_area_module'=> $data
         ]);
     }
 

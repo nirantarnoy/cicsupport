@@ -10,7 +10,7 @@ use kartik\select2\Select2;
 ?>
 
 <div class="person-form">
-
+    <h3><?= Html::encode($this->title) ?></h3>
     <?php $form = ActiveForm::begin(); ?>
 
     <div class="row">
@@ -18,8 +18,23 @@ use kartik\select2\Select2;
         <div class="col-lg-4">
             <?= $form->field($model, 'ad_user')->textInput(['maxlength' => true, 'readonly' => 'readonly']) ?>
         </div>
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4"></div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-2">
+            <?php
+            $checked1 = '';
+            if ($model->is_5s_enable == 1) {
+                $checked1 = 'checked';
+            }
+            ?>
+            <label for="">กรรมการ 5ส.</label><br />
+            <input type="checkbox" class="ace-switch input-lg ace-switch-yesno bgc-primary-d2"
+                   onclick="changestatus1($(this))" <?=$checked1?>/>
+            <input type="hidden" class="is-5s-enable" name="is_5s_enable" value="<?=$model->is_5s_enable?>">
+        </div>
+        <div class="col-lg-2">
+
+        </div>
+
     </div>
     <div class="row">
 
@@ -42,8 +57,20 @@ use kartik\select2\Select2;
 
 
         </div>
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4"></div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-4">
+            <?php
+            $checked2 = '';
+            if ($model->is_safety_enable == 1) {
+                $checked2 = 'checked';
+            }
+            ?>
+            <label for="">กรรมการ Safety</label><br />
+            <input type="checkbox" class="ace-switch input-lg ace-switch-yesno bgc-primary-d2"
+                   onclick="changestatus2($(this))" <?=$checked2?>/>
+            <input type="hidden" class="is-safety-enable" name="is_safety_enable" value="<?=$model->is_safety_enable?>">
+        </div>
+
     </div>
     <div style="height: 10px;"></div>
     <div class="row">
@@ -88,6 +115,26 @@ function changestatus(e){
     }else {
        e.prop('checked', false);
        $(".area-status").val(0);
+    }
+    
+}
+function changestatus1(e){
+    if(e.is(':checked')){
+       e.prop('checked', true);
+       $(".is-5s-enable").val(1);
+    }else {
+       e.prop('checked', false);
+       $(".is-5s-enable").val(0);
+    }
+    
+}
+function changestatus2(e){
+    if(e.is(':checked')){
+       e.prop('checked', true);
+       $(".is-safety-enable").val(1);
+    }else {
+       e.prop('checked', false);
+       $(".is-safety-enable").val(0);
     }
     
 }

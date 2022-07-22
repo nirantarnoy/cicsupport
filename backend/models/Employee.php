@@ -47,4 +47,13 @@ class Employee extends \common\models\Employee{
         $model = \backend\models\Employee::find()->where(['id'=>$emp_id])->one();
         return $model !=null?$model->fname.' '.$model->lname:'';
     }
+    public function findEmpFullNameFromPerson($person_id){
+        $emp_id = 0;
+        $model_per = \backend\models\Person::find()->where(['id'=>$person_id])->one();
+        if($model_per){
+            $emp_id = $model_per->emp_id;
+        }
+        $model = \backend\models\Employee::find()->where(['id'=>$emp_id])->one();
+        return $model !=null?$model->fname.' '.$model->lname:'';
+    }
 }

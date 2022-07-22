@@ -1047,6 +1047,21 @@ AppAsset::register($this);
                                           </span>
                                         </a>
                                     </li>
+                                    <div class="dropdown-divider"></div>
+                                    <li class="nav-item">
+                                        <a href="index.php?r=inspectiontopic" class="nav-link">
+                                          <span class="nav-text">
+                                                  <span>หัวข้อตรวจ Safety</span>
+                                          </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="index.php?r=inspectiontopicitem" class="nav-link">
+                                          <span class="nav-text">
+                                                  <span>รายละเอียดการตรวจ Safety</span>
+                                          </span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
 
@@ -1079,13 +1094,7 @@ AppAsset::register($this);
                                           </span>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="html/table-datatables.html" class="nav-link">
-                                          <span class="nav-text">
-                                                  <span>DataTables</span>
-                                          </span>
-                                        </a>
-                                    </li>
+
                                 </ul>
                             </div>
                             <b class="sub-arrow"></b>

@@ -47,17 +47,30 @@ $module_data = \backend\helpers\ModuleType::asArrayObject();
         <div class="col-lg-4">
             <label for="">ใช้กับกิจกรรม</label>
             <div class="tag-input-style" id="select2-parent">
-                <select multiple id="form-field-chosen-2" class="chosen-selectx form-control">
+                <?php if($model_area_module!=null):?>
+                <select multiple id="form-field-chosen-2" class="chosen-selectx form-control" name="module_use[]">
                     <option value=""></option>
                     <?php foreach ($module_data as $key => $value): ?>
-                        <?php $selected = '';
-                        if ($model->std_prize_id == $key) {
-                            $selected = 'selected';
-                        }
-                        ?>
-                        <option value=" <?= $key ?>" <?= $selected ?> ><?= $value['name'] ?></option>
+                        <?php if (in_array($value['id'], $model_area_module)): ?>
+                            <?php
+                                $selected = 'selected';
+                            ?>
+                            <option value="<?= $value['id'] ?>" <?= $selected ?> ><?= $value['name'] ?></option>
+                        <?php else: ?>
+                            <option value="<?= $value['id']?>" ><?= $value['name'] ?></option>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </select>
+                <?php else:?>
+                    <select multiple id="form-field-chosen-2" class="chosen-selectx form-control" name="module_use[]">
+                        <option value=""></option>
+                        <?php foreach ($module_data as $key => $value): ?>
+
+                                <option value="<?= $value['id']?>" ><?= $value['name'] ?></option>
+
+                        <?php endforeach; ?>
+                    </select>
+                <?php endif;?>
             </div>
         </div>
     </div>
@@ -83,7 +96,7 @@ $module_data = \backend\helpers\ModuleType::asArrayObject();
     </div>
 
     <div class="form-group">
-        <?=$form->field($model, 'status')->hiddenInput(['class'=>'area-status'])->label(false) ?>
+        <?= $form->field($model, 'status')->hiddenInput(['class' => 'area-status'])->label(false) ?>
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 
@@ -105,7 +118,18 @@ $(function(){
        $('#area-group').select2({
      allowClear: true,
      });
+       
 });
+function changestatus(e){
+    if(e.is(':checked')){
+       e.prop('checked', true);
+       $(".area-status").val(1);
+    }else {
+       e.prop('checked', false);
+       $(".area-status").val(0);
+    }
+    
+}
 JS;
 $this->registerJs($js, static::POS_END);
 ?>

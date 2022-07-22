@@ -4,7 +4,7 @@ namespace backend\models;
 use Yii;
 use yii\db\ActiveRecord;
 
-class Inspectionteam extends \common\models\InspectionTeam {
+class Plan extends \common\models\InspectionPlan {
     public function behaviors()
     {
         return [
@@ -39,24 +39,26 @@ class Inspectionteam extends \common\models\InspectionTeam {
 
         ];
     }
-    public function findName($team_id){
-        $model= \common\models\InspectionTeam::find()->where(['id'=>$team_id])->one();
-        return $model!=null?$model->name:'';
-    }
-    public function findHead($team_id){
-        $headname = '';
-        $model= \common\models\InspectionTeamAssign::find()->where(['team_id'=>$team_id,'is_head'=>1])->one();
-        if($model){
-            $headname = \backend\models\Employee::findEmpFullNameFromPerson($model->user_id);
+    public static function getLastNo()
+    {
+        $model = Plan::find()->MAX('plan_no');
+
+
+        $pre = "PL";
+        if ($model != null) {
+            $prefix = $pre . '-' . substr(date("Y"), 2, 2) . date('m') . date('d') . '-';
+            $cnum = substr((string)$model, 10, 4);
+            $len = strlen($cnum);
+            $clen = strlen($cnum + 1);
+            $loop = $len - $clen;
+            for ($i = 1; $i <= $loop; $i++) {
+                $prefix .= "0";
+            }
+            $prefix .= $cnum + 1;
+            return $prefix;
+        } else {
+            $prefix = $pre . '-' . substr(date("Y"), 2, 2) . date('m') . date('d') . '-';
+            return $prefix . '0001';
         }
-        return $headname;
-    }
-    public function findHeadId($team_id){
-        $head_id = 0;
-        $model= \common\models\InspectionTeamAssign::find()->where(['team_id'=>$team_id,'is_head'=>1])->one();
-        if($model){
-            $head_id = $model->user_id;
-        }
-        return $head_id;
     }
 }

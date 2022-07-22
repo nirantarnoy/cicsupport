@@ -72,9 +72,20 @@ class InspectionteamController extends Controller
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 $module_type_id = \Yii::$app->request->post('module_type_id');
+                $line_person_id = \Yii::$app->request->post('line_person_id');
+                $line_person_status = \Yii::$app->request->post('line_person_status');
 
                 $model->module_type_id = $module_type_id;
                 if ($model->save()) {
+                    if(count($line_person_id)){
+                        for($i=0;$i<=count($line_person_id)-1;$i++){
+                            $model_line = new \common\models\InspectionTeamAssign();
+                            $model_line->team_id = $model->id;
+                            $model_line->user_id = $line_person_id[$i];
+                            $model_line->status = $line_person_status[$i];
+                            $model_line->save(false);
+                        }
+                    }
                     return $this->redirect(['view', 'id' => $model->id]);
                 }
 
@@ -98,13 +109,45 @@ class InspectionteamController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $modelline = \common\models\InspectionTeamAssign::find()->where(['team_id'=>$id])->all();
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $removelist = \Yii::$app->request->post('removelist');
+            $line_person_id = \Yii::$app->request->post('line_person_id');
+            $line_person_status = \Yii::$app->request->post('line_person_status');
+            $line_ishead_status = \Yii::$app->request->post('line_ishead_status');
+
+            if($model->save()){
+                if(count($line_person_id)){
+                    for($i=0;$i<=count($line_person_id)-1;$i++){
+                        $check_model = \common\models\InspectionTeamAssign::find()->where(['user_id'=>$line_person_id[$i]])->one();
+                        if($check_model){
+                            $check_model->status = $line_person_status[$i];
+                            $check_model->is_head = $line_ishead_status[$i];
+                            $check_model->save(false);
+                        }else{
+                            $model_line = new \common\models\InspectionTeamAssign();
+                            $model_line->team_id = $model->id;
+                            $model_line->user_id = $line_person_id[$i];
+                            $model_line->status = $line_person_status[$i];
+                            $model_line->is_head = $line_ishead_status[$i];
+                            $model_line->save(false);
+                        }
+
+                    }
+                }
+                $ex = explode(',',$removelist);
+                if(count($ex)>0){
+                    \common\models\InspectionTeamAssign::deleteAll(['id'=>$ex]);
+                }
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
         }
 
         return $this->render('update', [
             'model' => $model,
+            'modelline'=>$modelline,
         ]);
     }
 

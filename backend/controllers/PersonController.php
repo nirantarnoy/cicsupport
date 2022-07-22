@@ -13,9 +13,7 @@ use yii\filters\VerbFilter;
  */
 class PersonController extends Controller
 {
-    /**
-     * @inheritDoc
-     */
+    public $enableCsrfValidation =false;
     public function behaviors()
     {
         return array_merge(
@@ -72,7 +70,14 @@ class PersonController extends Controller
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 $emp_id = \Yii::$app->request->post('emp_id');
+                $is_5s_enable = \Yii::$app->request->post('is_5s_enable');
+                $is_safety_enable = \Yii::$app->request->post('is_safety_enable');
+
+
+
                 $model->emp_id = $emp_id;
+                $model->is_5s_enable = $is_5s_enable;
+                $model->is_safety_enable = $is_safety_enable;
                 if($model->save()){
                     return $this->redirect(['view', 'id' => $model->id]);
                 }
@@ -100,7 +105,13 @@ class PersonController extends Controller
 
         if ($this->request->isPost && $model->load($this->request->post())) {
             $emp_id = \Yii::$app->request->post('emp_id');
+            $is_5s_enable = \Yii::$app->request->post('is_5s_enable');
+            $is_safety_enable = \Yii::$app->request->post('is_safety_enable');
+
+
             $model->emp_id = $emp_id;
+            $model->is_5s_enable = $is_5s_enable;
+            $model->is_safety_enable = $is_safety_enable;
             if($model->save()){
                 return $this->redirect(['view', 'id' => $model->id]);
             }
@@ -139,5 +150,24 @@ class PersonController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionFindperson(){
+        $html = '';
+        $model = \backend\models\Person::find()->all();
+        if($model){
+            foreach ($model as $value){
+                $html.="<tr>";
+                $html .= '<td style="text-align: center">
+                        <div class="btn btn-outline-success btn-sm" onclick="addselecteditem($(this))" data-var="' . $value->id . '">เลือก</div>
+                        <input type="hidden" class="line-person-id" value="' . $value->id. '">
+                        <input type="hidden" class="line-person-fullname" value="' . \backend\models\Employee::findEmpFullName($value->emp_id). '">
+                       </td>';
+                $html .= '<td>' . \backend\models\Employee::findEmpcode($value->emp_id) . '</td>';
+                $html .= '<td>' .\backend\models\Employee::findEmpFullName($value->emp_id). '</td>';
+                $html.="</tr>";
+            }
+        }
+        echo $html;
     }
 }

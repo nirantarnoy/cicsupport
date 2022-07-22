@@ -49,13 +49,27 @@ $this->params['breadcrumbs'][] = $this->title;
                 [
                     'attribute' => 'std_prize_id',
                     'value' => function ($data) {
-                       return \backend\models\Standardprize::findName($data->std_prize_id);
+                        return \backend\models\Standardprize::findName($data->std_prize_id);
                     }
                 ],
                 'seq_sort',
                 [
+                    'attribute' => '',
+                    'label' => 'กิจกรรม',
+                    'format' => 'raw',
+                    'value' => function ($data) {
+                        $html = '';
+                        $modelx = \common\models\AreaModuleCheck::find()->where(['area_id' => $data->id])->all();
+                        foreach ($modelx as $value) {
+                            $html .= '<span class="m-1 badge bgc-info-d3 radius-round text-white-tp1 px-3 text-90">'.\backend\helpers\ModuleType::getTypeById($value->module_id).'</span>';
+                        }
+
+                        return $html;
+                    }
+                ],
+                [
                     'attribute' => 'status',
-                    'headerOptions' => ['style' => 'text-align: center'],
+                    'headerOptions' => ['style' => 'text-align: center;width: 10%'],
                     'contentOptions' => ['style' => 'text-align: center'],
                     'format' => 'html',
                     'value' => function ($data) {
@@ -69,7 +83,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 [
 
                     'header' => 'ตัวเลือก',
-                    'headerOptions' => ['style' => 'text-align:center;', 'class' => 'activity-view-link',],
+                    'headerOptions' => ['style' => 'text-align:center;width: 10%', 'class' => 'activity-view-link',],
                     'class' => 'yii\grid\ActionColumn',
                     'contentOptions' => ['style' => 'text-align: center'],
                     'template' => '{view} {update} {delete}',

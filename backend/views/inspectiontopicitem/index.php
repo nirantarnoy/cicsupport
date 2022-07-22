@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <div class="col-lg-6" style="text-align: right;">
             <p>
-                <?= Html::a('Create Area', ['create'], ['class' => 'btn btn-success']) ?>
+                <?= Html::a('Create', ['create'], ['class' => 'btn btn-success']) ?>
             </p>
 
         </div>
